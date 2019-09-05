@@ -1,6 +1,10 @@
 const pg = require('pg');
 const pokemon = require('./models/pokemon');
+
+const banks = require('./models/banks');
+const ref_rates = require('./models/ref_rates');
 const packages = require('./models/packages');
+
 const url = require('url');
 
 var configs;
@@ -40,8 +44,9 @@ module.exports = {
    * ADD APP MODELS HERE
    */
   pokemon: pokemon(pool),
+  banks: banks(pool),
+  ref_rates: ref_rates(pool),
   packages: packages(pool),
-
   //make queries directly from here
   queryInterface: (text, params, callback) => {
     return pool.query(text, params, callback);

@@ -9,7 +9,7 @@ module.exports = (db) => {
           // queryResult contains pokemon data returned from the pokemon model
           if (error) {
   
-            console.error('error getting pokemon', error);
+            console.error('error getting packages', error);
             response.status(500);
             response.send('server error');
   
