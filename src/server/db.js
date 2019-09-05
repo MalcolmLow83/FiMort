@@ -1,5 +1,4 @@
 const pg = require('pg');
-const pokemon = require('./models/pokemon');
 
 const banks = require('./models/banks');
 const ref_rates = require('./models/ref_rates');
@@ -43,7 +42,7 @@ module.exports = {
   /*
    * ADD APP MODELS HERE
    */
-  pokemon: pokemon(pool),
+  
   banks: banks(pool),
   ref_rates: ref_rates(pool),
   packages: packages(pool),

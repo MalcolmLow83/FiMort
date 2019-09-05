@@ -1,7 +1,7 @@
 module.exports = (db) => {
 
     let getAllRefRates = (request, response) => {
-        console.log(db)
+        // console.log(db)
         db.ref_rates.allRefRates((error,ref_rates) => {
             if (error) {
                 console.error('error getting ref_rates', error);

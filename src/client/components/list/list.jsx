@@ -4,19 +4,13 @@ import styles from './style.scss';
 
 class List extends React.Component {
 
-  // calculateHandler(){
-  //   console.log("calculateHandler");
-  //   console.log(this.props.packages);
-  //   // this.props.calculateHandler
-  // }
-
   render() {
     let display = "";
     if (this.props.packages !== null) {
       display = this.props.packages.map((rate, index) => {
         return(
           <div>
-            <p key={index}>{rate.name}</p>
+            <p key={index + rate.id}>{rate.name}</p>
           </div>
         )
       })

@@ -1,7 +1,7 @@
 module.exports = (db) => {
 
     let getAllBanks = (request, response) => {
-        console.log(db)
+        // console.log(db)
         db.banks.allBanks((error,banks) => {
             if (error) {
                 console.error('error getting banks', error);

@@ -3,7 +3,6 @@ import { hot } from 'react-hot-loader';
 
 import Form from './components/form/form';
 import List from './components/list/list';
-import Counter from './components/counter/counter';
 
 class App extends React.Component {
   constructor() {
@@ -12,7 +11,7 @@ class App extends React.Component {
       banks: null,
       ref_rates: null,
       packages: null,
-      mapping: []
+      mapping: null
     };
   }
 
@@ -44,21 +43,16 @@ class App extends React.Component {
       console.log(error)
     })
 
-    fetch("/mapping")
+    fetch("/mappings")
     .then(response => response.json())
     .then((result) => {
-      this.setState({mapping:result.mapping})
+      this.setState({mapping:result.mappings})
     },
     (error) => {
       console.log(error)
     })
-
-
-  }
-
   
-
-
+  }
 
   render() {
     return (
@@ -66,7 +60,6 @@ class App extends React.Component {
         <div className="row">
           <Form  />
           <List packages={this.state.packages}/>
-          <Counter />
           </div>
       </div>
     );
