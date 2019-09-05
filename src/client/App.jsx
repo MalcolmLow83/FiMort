@@ -1,8 +1,10 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 
-import Counter from './components/counter/counter';
 import Form from './components/form/form';
+import List from './components/list/list';
+import Counter from './components/counter/counter';
+
 
 class App extends React.Component {
   constructor() {
@@ -14,10 +16,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <Form />
-        Welcome.
-        <Counter message={this.state.message} />
+      <div className="container">
+        <div className="row">
+          <Form />
+          Welcome.
+          <List />
+          <Counter message={this.state.message} />
+          </div>
       </div>
     );
   }

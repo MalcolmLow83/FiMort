@@ -12,8 +12,8 @@ class Form extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>{this.state.monkey}</p>
+      <div className="col">
+        <h6>form component</h6>
         <input className={styles.name} />
       </div>
     );
