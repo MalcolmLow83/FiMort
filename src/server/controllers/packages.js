@@ -22,19 +22,55 @@ module.exports = (db) => {
         });
     };
 
-    let getMappings = (request, response) => {
+    let getRates1 = (request, response) => {
       // console.log(db);
-      db.packages.allMappings((error, mappings) => {
+      db.packages.allRates1((error, rates1) => {
         if (error) {
-          console.error('error getting mapping', error);
+          console.error('error getting rates1', error);
           response.status(500);
           response.send('server error');
         } else {
-          if (mappings === null) {
-            response.status(404);
+          if (rates1 === null) {
+            response.send(404);
             response.send('not found');
           } else {
-            response.send({mappings: mappings})
+            response.send({rates1:rates1})
+          }
+        }
+      })
+    }
+
+    let getRates2 = (request, response) => {
+      // console.log(db);
+      db.packages.allRates2((error, rates2) => {
+        if (error) {
+          console.error('error getting rates2', error);
+          response.status(500);
+          response.send('server error');
+        } else {
+          if (rates2 === null) {
+            response.send(404);
+            response.send('not found');
+          } else {
+            response.send({rates2:rates2})
+          }
+        }
+      })
+    }
+
+    let getRates3 = (request, response) => {
+      // console.log(db);
+      db.packages.allRates3((error, rates3) => {
+        if (error) {
+          console.error('error getting rates3', error);
+          response.status(500);
+          response.send('server error');
+        } else {
+          if (rates3 === null) {
+            response.send(404);
+            response.send('not found');
+          } else {
+            response.send({rates3:rates3})
           }
         }
       })
@@ -43,7 +79,9 @@ module.exports = (db) => {
     return {
       //route : top
       getAllPackages : getAllPackages,
-      getMappings : getMappings
+      getRates1 : getRates1,
+      getRates2 : getRates2,
+      getRates3 : getRates3
     }
   
   };

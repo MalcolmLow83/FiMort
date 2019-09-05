@@ -23,14 +23,40 @@ module.exports = (dbPoolInstance) => {
         });
     };
 
-    let allMappings = (callback) => {
+    let allRates1 = (callback) => {
         dbPoolInstance.query('SELECT ref_rates.rate FROM packages INNER JOIN ref_rates ON (ref_rates.id = packages.rate_1)', (error, queryResult) => {
             if (error) {
                 callback(error, null);
             } else {
                 if (queryResult.rows.length > 0) {
-                    console.log("TESTTTTTTTTTTTTTTTTTT")
-                    console.log(queryResult.rows)
+                    callback(null, queryResult.rows);
+                } else {
+                    callback(null, null)
+                }
+            }
+        })
+    }
+
+    let allRates2 = (callback) => {
+        dbPoolInstance.query('SELECT ref_rates.rate FROM packages INNER JOIN ref_rates ON (ref_rates.id = packages.rate_2)', (error, queryResult) => {
+            if (error) {
+                callback(error, null);
+            } else {
+                if (queryResult.rows.length > 0) {
+                    callback(null, queryResult.rows);
+                } else {
+                    callback(null, null)
+                }
+            }
+        })
+    }
+
+    let allRates3 = (callback) => {
+        dbPoolInstance.query('SELECT ref_rates.rate FROM packages INNER JOIN ref_rates ON (ref_rates.id = packages.rate_3)', (error, queryResult) => {
+            if (error) {
+                callback(error, null);
+            } else {
+                if (queryResult.rows.length > 0) {
                     callback(null, queryResult.rows);
                 } else {
                     callback(null, null)
@@ -41,7 +67,9 @@ module.exports = (dbPoolInstance) => {
   
     return {
         allPackages,
-        allMappings
+        allRates1,
+        allRates2,
+        allRates3
     };
   };
   
