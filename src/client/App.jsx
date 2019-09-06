@@ -3,6 +3,7 @@ import { hot } from 'react-hot-loader';
 
 import Form from './components/form/form';
 import List from './components/list/list';
+import Filter from './components/filter/filter';
 
 class App extends React.Component {
   constructor() {
@@ -11,11 +12,16 @@ class App extends React.Component {
       banks: null,
       ref_rates: null,
       packages: null,
-      year1_rates: null,
-      year2_rates: null,
-      year3_rates: null,
-      rates: null
+      rates: null,
+      loanType: "both",
+      rateType: "both",
+      propType: "both",
+      compType: "both"
     };
+    this.loanTypeHandler = this.loanTypeHandler.bind(this);
+    this.rateTypeHandler = this.rateTypeHandler.bind(this);
+    this.propTypeHandler = this.propTypeHandler.bind(this);
+    this.compTypeHandler = this.compTypeHandler.bind(this);
   }
 
   componentDidMount(){
@@ -49,11 +55,40 @@ class App extends React.Component {
   
   }
 
+  loanTypeHandler(loanType){
+    this.state.loanType = loanType;
+    this.setState({loanType: loanType});
+  };
+
+  rateTypeHandler(rateType){
+    this.state.rateType = rateType;
+    this.setState({rateType: rateType});
+  };
+
+  propTypeHandler(propType){
+    this.state.propType = propType;
+    this.setState({propType: propType});
+  };
+
+  compTypeHandler(compType){
+    this.state.compType = compType;
+    this.setState({compType: compType});
+  };
+
+  submitTypeHandler(){
+    console.log("submitTypeHandler");
+  };
+
   render() {
     return (
       <div className="container">
         <div className="row">
-          <Form  />
+          <Filter loanTypeHandler={this.loanTypeHandler} loanType={this.state.loanType} 
+                  rateTypeHandler={this.rateTypeHandler} rateType={this.state.rateType}
+                  propTypeHandler={this.propTypeHandler} propType={this.state.propType}
+                  compTypeHandler={this.compTypeHandler} compType={this.state.compType}
+                  submitTypeHandler={this.submitTypeHandler}
+          />
           <List packages={this.state.packages} rates={this.state.rates}/>
           </div>
       </div>

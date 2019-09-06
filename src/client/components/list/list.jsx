@@ -9,8 +9,13 @@ class List extends React.Component {
     if (this.props.rates !== null) {
       display = this.props.rates.map((rate, index) => {
         return(
-          <div>
-            <p key={index+0}>{rate.name} {rate.year1_rate} {rate.year2_rate} {rate.year3_rate}</p>
+          <div className="rateList">
+            <ul class="list-group list-group-horizontal">
+              <li class="list-group-item">{rate.name}</li>
+              <li class="list-group-item">{rate.year1_rate}</li>
+              <li class="list-group-item">{rate.year2_rate}</li>
+              <li class="list-group-item">{rate.year3_rate}</li>
+            </ul>
           </div>
         )
       })
@@ -19,7 +24,6 @@ class List extends React.Component {
     return (
       <div className="col">
         <h6>list component</h6>
-        <button onClick={this.props.calculateHandler}>click</button>
         {display}
       </div>
     );

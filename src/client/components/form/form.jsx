@@ -3,12 +3,6 @@ import React from 'react';
 import styles from './style.scss';
 
 class Form extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      monkey: 'haha',
-    };
-  }
 
   render() {
     return (
@@ -16,7 +10,7 @@ class Form extends React.Component {
         <h6>form component</h6>
         <div>
         <select>
-            <option value="new">New Loan</option>
+            <option onChange={this.props.new}>New Loan</option>
             <option value="refi">Refinance</option>
           </select>
         </div>
