@@ -20,10 +20,13 @@ INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 2.25, 2);
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 2.6, 4);
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 2.75, 4);
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 2.08, 5);
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('FHR8', '0.95', 5);
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('FHR8', 0.95, 5);
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 2.38, 6);
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed 2nd yr', 2.48, 6);
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed', 2.6, 6);
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('HHR', '4.85', 6);
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed 2nd yr', 2.7, 6);
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed 2nd yr', 2.85, 6);
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('HHR', 4.85, 6);
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed (min loan $800k)', 1.98, 7);
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 2, 7);
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed (min loan $800k)', 2.03, 7);
@@ -34,19 +37,6 @@ INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed', 2.33, 8);
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed 3rd yr', 2.4, 8);
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('4Yrs Fixed', 2.78, 8);
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('SRFR2', 4.85, 8);
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('1Yr Fixed', 2.22, 9);
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 1.98, 9);
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('MBR', 1.55, 9);
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('R BR', 0, 10);
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('FDR', 1.37, 11);
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('CLR19', 3.75, 12);
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('PHDR19', 2.25, 12);
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('PPLR19', 3.25, 12);
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('SI BR', 3.25, 13);
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 2.08, 14);
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed', 1.98, 14);
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed 3rd yr', 2.08, 14);
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('ML', 0.85, 14);
 
 
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('BOC 3M Sibor, 2Yrs lock-in (Min loan $500k)', 'both', 'float', 'private', 'completed', true, 500000, 2, 0.7, 2, 0.7, 2, 0.7, 'For loan quantum 500k and above. Legal Subsidy of 0.4% of loan amount, capped at $2,000. Full Redemption penalty: 1.5%. Cancellation Fees: 1.5%. Admin Fee: 0.25%. Floor rate set at 1.00%. In the event SIBOR + Spread is lower than 1%, Floor rate will apply.', 2);
@@ -59,6 +49,28 @@ INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_i
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('CITI 2Yrs Fixed, 2Yrs lock-in (Min loan $500k)', 'both', 'fixed', 'private', 'completed', true, 500000, 5, 0, 5, 0, 1, 0.9, 'legal subsidy for refi is 0.2% of loan amount capped at $2,500', 4);
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('CITI 1M Sibor, 2Yrs lock-in (Min loan $500k)', 'new', 'float', 'private', 'buc', false, 500000, 1, 0.25, 1, 0.25, 1, 0.45, 'Min loan $500K. Comes with 50% interest offset.', 4);
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('CITI 3Yrs Fixed, 2Yrs lock-in (Min loan $500k)', 'both', 'fixed', 'private', 'completed', true, 500000, 6, 0, 6, 0, 6, 0, 'legal subsidy for refi is 0.2% of loan amount capped at $2,500', 4);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('DBS FHR8, 1Yr lock-in', 'both', 'float', 'both', 'completed', true, 0, 8, 1.13, 8, 0.95, 8, 1.13, 'Commitment Fee: 1.50% on amount prepaid, 1.50% on outstanding loan. Cash rebate for refi: >$500k loan - $1,800. >$1M loan - $2,000.', 5);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('DBS FHR8, no lock-in (BUC)', 'new', 'float', 'both', 'buc', false, 0, 8, 1.4, 8, 1.4, 8, 1.4, 'Commitment Fee: Nil. Cancellation fee: 0.75%. 2X Free conversion before TOP. After T.O.P. - 1X free conversion.', 5);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('DBS 2Yrs Fixed, 2Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 0, 7, 0, 7, 0, 7, 0, 'Commitment Fee: 1.50% on amount prepaid, 1.50% on outstanding loan. Waiver of penalty due to sale of property. Cash rebate for refi: >$500k loan - $1,800. >$1M loan - $2,000.', 5);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HLF 2Yrs Fixed, 2Yrs lock-in, for HDB only', 'both', 'fixed', 'hdb', 'completed', true, 0, 9, 0, 10, 0, 14, -2.07, 'No Legal Subsidy. No valuation fees. HDB - does not apply for EC. Applicable for DBSS', 6);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HLF 3Yrs Fixed, 3Yrs lock-in, for HDB only', 'both', 'fixed', 'hdb', 'completed', true, 0, 11, 0, 12, 0, 13, 0, 'No Legal Subsidy. No valuation fees. HDB - does not apply for EC. Applicable for DBSS', 6);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 1M Sibor, no lock-in, >$800k', 'new', 'float', 'private', 'buc', false, 800000, 1, 0.2, 1, 0.25, 1, 0.35, '"Min Loan - $800,000. Option of Smartmortgage (For all Sibor package, there is an interest offset feature. 70% of clients deposit with hsbc will enjoy the same interest as their housing loan). DPS, rates will be +0.05%. Free conversion within TOP 6mths', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 1M Sibor, loyalty package, 2Yrs lock-in', 'new', 'float', 'private', 'buc', true, 200000, 1, 0.45, 1, 0.45, 1, 0.45, 'Min Loan - $200,000. Option of Smartmortgage (For all Sibor package, there is an interest offset feature. 70% of clients deposit with hsbc will enjoy the same interest as their housing loan). DPS, rates will be +0.05%. 1) 1-time Free conversion, exercisable any time', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 1M Sibor, no lock-in', 'new', 'float', 'private', 'buc', false, 200000, 1, 0.25, 1, 0.3, 1, 0.4, 'Min Loan - $200,000. Option of Smartmortgage (For all Sibor package, there is an interest offset feature. 70% of clients deposit with hsbc will enjoy the same interest as their housing loan). DPS, rates will be +0.05%. Free conversion within TOP 6mths', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 1M Sibor, 2Yrs lock-in', 'both', 'float', 'both', 'completed', true, 200000, 1, 0.3, 1, 0.3, 1, 0.4, 'Min Loan - $200,000. Option of Smartmortgage (For all Sibor package, there is an interest offset feature. 70% of clients deposit with hsbc will enjoy the same interest as their housing loan). DPS, rates will be +0.05%.  ETL - the pricing for Advance will be 10bps higher throughout the loan tenor. 1) 1-time Free conversion, exercisable any time. 2) Cash incentive $1000 (For loan $200k to $499k)Cash incentive $2000 (For loan above $500k) Cash incentive $2.5k (For loan above 1.5m) For refi only', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 1M Sibor, 2Yrs lock-in, >$800k', 'both', 'float', 'both', 'completed', true, 800000, 1, 0.25, 1, 0.25, 1, 0.35, 'Min Loan - $800,000. Option of Smartmortgage (For all Sibor package, there is an interest offset feature. 70% of clients deposit with hsbc will enjoy the same interest as their housing loan). DPS, rates will be +0.05%.  ETL - the pricing for Advance will be 10bps higher throughout the loan tenor. 1) 1-time Free conversion, exercisable any time. 2) Cash incentive $1000 (For loan $200k to $499k) Cash incentive $2000 (For loan above $500k) Cash incentive $2.5k (For loan above 1.5m) For refi only', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC TDMR Sibor, 2Yrs lock-in', 'both', 'float', 'both', 'completed', true, 200000, 19, 0.98, 19, 1.08, 19, 1.18, 'Min Loan - $200,000.  1-time Free conversion, exercisable any time. 2) Cash incentive $1000 (For loan $200k to $499k) Cash incentive $2000 (For loan above $500k) Cash incentive $2.5k (For loan above 1.5m) For refi only', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 2Yrs Fixed, 2Yrs lock-in, >$800k', 'both', 'fixed', 'both', 'completed', true, 800000, 15, 0, 15, 0, 1, 0.75, 'Min Loan - $800,000. 1-time Free conversion, exercisable after lock-in period 2) Cash incentive $1000 (For loan $200k to $499k) Cash incentive $2000 (For loan above $500k) Cash incentive $2.5k (For loan above 1.5m) For refi only', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 2Yrs Fixed, 2Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 200000, 16, 0, 16, 0, 1, 0.75, 'Min Loan - $200,000.  1-time Free conversion, exercisable after lock-in period 2) Cash incentive $1000 (For loan $200k to $499k) Cash incentive $2000 (For loan above $500k) Cash incentive $2.5k (For loan above 1.5m) For refi only', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 3Yrs Fixed, 3Yrs lock-in, >$800k', 'both', 'fixed', 'both', 'completed', true, 800000, 17, 0, 17, 0, 17, 0, 'Min Loan - $800,000. 1-time Free conversion, exercisable after lock-in period 2) Cash incentive $1000 (For loan $200k to $499k) Cash incentive $2000 (For loan above $500k) Cash incentive $2.5k (For loan above 1.5m) For refi only', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 3Yrs Fixed, 3Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 200000, 18, 0, 18, 0, 18, 0, 'Min Loan - $200,000.  1-time Free conversion, exercisable after lock-in period 2) Cash incentive $1000 (For loan $200k to $499k) Cash incentive $2000 (For loan above $500k) Cash incentive $2.5k (For loan above 1.5m) For refi only', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank Board Rate, 2Yrs lock-in', 'both', 'float', 'both', 'completed', true, 0, 24, -2.55, 24, -2.55, 24, -2.55, '', 8);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank Board Rate, no lock-in', 'new', 'float', 'private', 'buc', false, 0, 24, -2.55, 24, -2.55, 24, -2.55, '', 8);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank 2Yrs Fixed, 2Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 0, 20, 0, 20, 0, 24, -2.17, '', 8);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank 3Yrs Fixed, 3Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 0, 21, 0, 21, 0, 22, 0, '', 8);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank 4Yrs Fixed, 4Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 0, 23, 0, 23, 0, 23, 0, '', 8);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank 5Yrs Fixed, 5Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 0, 23, 0, 23, 0, 23, 0, '', 8);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank Sibor, 3Yrs lock-in', 'both', 'float', 'both', 'completed', true, 0, 2, 0.9, 2, 0.9, 2, 0.9, '', 8);
 
 
 ----------------------------------------Editing & tracking----------------------------
@@ -88,18 +100,23 @@ INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 2.75, 4); --6 CI
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 2.08, 5); --7 DBS 2Yrs Fixed
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('FHR8', '0.95', 5); --8 DBS FHR8
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 2.38, 6); --9 HLF 2Yrs Fixed
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed', 2.6, 6); --10 HLF 3Yrs Fixed
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('HHR', '4.85', 6); --11 HLF HHR
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed (min loan $800k)', 1.98, 7); --12 HSBC 2Yrs Fixed >$800k
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 2, 7); --13 HSBC 2Yrs Fixed
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed (min loan $800k)', 2.03, 7); --14 HSBC 3Yrs Fixed >$800k
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed', 2.05, 7); --15 HSBC 3Yrs Fixed
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('TMDR', 1.40, 7); --16 HSBC FDR
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 2.28, 8);   --17 MAY 2Yrs Fixed
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed', 2.33, 8);   --18 MAY 3Yrs Fixed
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed 3rd yr', 2.4, 8);   --19 MAY 3Yrs Fixed 3rd yr
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('4Yrs Fixed', 2.78, 8);   --20 MAY 4Yrs Fixed
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('SRFR2', 4.85, 8);   --21 MAY SRFR2
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed 2nd yr', 2.48, 6); --10 HLF 2Yrs Fixed
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed', 2.6, 6); --11 HLF 3Yrs Fixed
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed 2nd yr', 2.7, 6); --12 HLF 3Yrs Fixed
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed 2nd yr', 2.85, 6); --13 HLF 3Yrs Fixed
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('HHR', '4.85', 6); --14 HLF HHR
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed (min loan $800k)', 1.98, 7); --15 HSBC 2Yrs Fixed >$800k
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 2, 7); --16 HSBC 2Yrs Fixed
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed (min loan $800k)', 2.03, 7); --17 HSBC 3Yrs Fixed >$800k
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed', 2.05, 7); --18 HSBC 3Yrs Fixed
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('TMDR', 1.40, 7); --19 HSBC FDR
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 2.28, 8);   --20 MAY 2Yrs Fixed
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed', 2.33, 8);   --21 MAY 3Yrs Fixed
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed 3rd yr', 2.4, 8);   --22 MAY 3Yrs Fixed 3rd yr
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('4Yrs Fixed', 2.78, 8);   --23 MAY 4Yrs Fixed
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('SRFR2', 4.85, 8);   --24 MAY SRFR2
+
+
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('1Yr Fixed', 2.22, 9);   --22 OCBC 1Yr Fixed
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 1.98, 9);   --23 OCBC 2Yrs Fixed
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('MBR', 1.55, 9);   --24 OCBC MBR
@@ -121,13 +138,52 @@ INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_i
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('BOC 3M Sibor, 2Yrs lock-in (Min loan $300k)', 'both', 'float', 'private', 'completed', false, 300000, 2, 0.75, 2, 0.75, 2, 0.75, 'For loan quantum 300k and above. *NO* Legal Subsidy. Floor rate set at 1.00%. In the event SIBOR + Spread is lower than 1%, Floor rate will apply. Cancellation Penalty: 1.5%. No other fees.', 2);
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('CIMB 1M Sibor, 2Yrs lock-in (Min loan $200k)', 'both', 'float', 'private', 'completed', true, 200000, 1, 0.25, 1, 0.3, 1, 0.35, 'Full redemption penalty - 1.5%. No partial prepayment penalty. No legal subsidy. Min loan size: $200K', 3);
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('CIMB 1M Sibor, 2Yrs lock-in (Min loan $200k)', 'new', 'float', 'private', 'buc', true, 200000, 1, 0.25, 1, 0.3, 1, 0.35, 'Full redemption penalty - 1.5%. No partial prepayment penalty. No legal subsidy. Min loan size: $200K', 3);
-
-----------------------------------------Editing & tracking----------------------------
-
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('CITI 1M Sibor, 2Yrs lock-in (Min loan $500k)', 'both', 'float', 'private', 'completed', true, 500000, 1, 0.3, 1, 0.3, 1, 0.4, 'legal subsidy for refi is 0.2% of loan amount capped at $2,500. Comes with 50% interest offset. Waiver of prepayment fee due to sale of property.', 4);
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('CITI 1M Sibor, 2Yrs lock-in (Min loan $500k)', 'both', 'float', 'private', 'completed', true, 500000, 1, 0.3, 1, 0.3, 1, 0.4, 'legal subsidy for refi is 0.2% of loan amount capped at $2,500. Comes with 50% interest offset. Waiver of prepayment fee due to sale of property.', 4);
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('CITI 2Yrs Fixed, 2Yrs lock-in (Min loan $500k)', 'both', 'fixed', 'private', 'completed', true, 500000, 5, 0, 5, 0, 1, 0.9, 'legal subsidy for refi is 0.2% of loan amount capped at $2,500', 4);
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('CITI 1M Sibor, 2Yrs lock-in (Min loan $500k)', 'new', 'float', 'private', 'buc', false, 500000, 1, 0.25, 1, 0.25, 1, 0.45, 'Min loan $500K. Comes with 50% interest offset.', 4);
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('CITI 3Yrs Fixed, 2Yrs lock-in (Min loan $500k)', 'both', 'fixed', 'private', 'completed', true, 500000, 6, 0, 6, 0, 6, 0, 'legal subsidy for refi is 0.2% of loan amount capped at $2,500', 4);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('DBS FHR8, 1Yr lock-in', 'both', 'float', 'both', 'completed', true, 0, 8, 1.13, 8, 0.95, 8, 1.13, 'Commitment Fee: 1.50% on amount prepaid, 1.50% on outstanding loan. Cash rebate for refi: >$500k loan - $1,800. >$1M loan - $2,000.', 5);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('DBS FHR8, no lock-in (BUC)', 'new', 'float', 'both', 'buc', false, 0, 8, 1.4, 8, 1.4, 8, 1.4, 'Commitment Fee: Nil. Cancellation fee: 0.75%. 2X Free conversion before TOP. After T.O.P. - 1X free conversion.', 5);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('DBS 2Yrs Fixed, 2Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 0, 7, 0, 7, 0, 7, 0, 'Commitment Fee: 1.50% on amount prepaid, 1.50% on outstanding loan. Waiver of penalty due to sale of property. Cash rebate for refi: >$500k loan - $1,800. >$1M loan - $2,000.', 5);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HLF 2Yrs Fixed, 2Yrs lock-in, for HDB only', 'both', 'fixed', 'hdb', 'completed', true, 0, 9, 0, 10, 0, 14, -2.07, 'No Legal Subsidy. No valuation fees. HDB - does not apply for EC. Applicable for DBSS', 6);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HLF 3Yrs Fixed, 3Yrs lock-in, for HDB only', 'both', 'fixed', 'hdb', 'completed', true, 0, 11, 0, 12, 0, 13, 0, 'No Legal Subsidy. No valuation fees. HDB - does not apply for EC. Applicable for DBSS', 6);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 1M Sibor, no lock-in, >$800k', 'new', 'float', 'private', 'buc', false, 800000, 1, 0.2, 1, 0.25, 1, 0.35, '"Min Loan - $800,000. Option of Smartmortgage (For all Sibor package, there is an interest offset feature. 70% of clients deposit with hsbc will enjoy the same interest as their housing loan). DPS, rates will be +0.05%. Free conversion within TOP 6mths', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 1M Sibor, loyalty package, 2Yrs lock-in', 'new', 'float', 'private', 'buc', true, 200000, 1, 0.45, 1, 0.45, 1, 0.45, 'Min Loan - $200,000. Option of Smartmortgage (For all Sibor package, there is an interest offset feature. 70% of clients deposit with hsbc will enjoy the same interest as their housing loan). DPS, rates will be +0.05%. 1) 1-time Free conversion, exercisable any time', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 1M Sibor, no lock-in', 'new', 'float', 'private', 'buc', false, 200000, 1, 0.25, 1, 0.3, 1, 0.4, 'Min Loan - $200,000. Option of Smartmortgage (For all Sibor package, there is an interest offset feature. 70% of clients deposit with hsbc will enjoy the same interest as their housing loan). DPS, rates will be +0.05%. Free conversion within TOP 6mths', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 1M Sibor, 2Yrs lock-in', 'both', 'float', 'both', 'completed', true, 200000, 1, 0.3, 1, 0.3, 1, 0.4, 'Min Loan - $200,000. Option of Smartmortgage (For all Sibor package, there is an interest offset feature. 70% of clients deposit with hsbc will enjoy the same interest as their housing loan). DPS, rates will be +0.05%.  ETL - the pricing for Advance will be 10bps higher throughout the loan tenor. 1) 1-time Free conversion, exercisable any time. 2) Cash incentive $1000 (For loan $200k to $499k)Cash incentive $2000 (For loan above $500k) Cash incentive $2.5k (For loan above 1.5m) For refi only', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 1M Sibor, 2Yrs lock-in, >$800k', 'both', 'float', 'both', 'completed', true, 800000, 1, 0.25, 1, 0.25, 1, 0.35, 'Min Loan - $800,000. Option of Smartmortgage (For all Sibor package, there is an interest offset feature. 70% of clients deposit with hsbc will enjoy the same interest as their housing loan). DPS, rates will be +0.05%.  ETL - the pricing for Advance will be 10bps higher throughout the loan tenor. 1) 1-time Free conversion, exercisable any time. 2) Cash incentive $1000 (For loan $200k to $499k) Cash incentive $2000 (For loan above $500k) Cash incentive $2.5k (For loan above 1.5m) For refi only', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC TDMR Sibor, 2Yrs lock-in', 'both', 'float', 'both', 'completed', true, 200000, 19, 0.98, 19, 1.08, 19, 1.18, 'Min Loan - $200,000.  1-time Free conversion, exercisable any time. 2) Cash incentive $1000 (For loan $200k to $499k) Cash incentive $2000 (For loan above $500k) Cash incentive $2.5k (For loan above 1.5m) For refi only', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 2Yrs Fixed, 2Yrs lock-in, >$800k', 'both', 'fixed', 'both', 'completed', true, 800000, 15, 0, 15, 0, 1, 0.75, 'Min Loan - $800,000. 1-time Free conversion, exercisable after lock-in period 2) Cash incentive $1000 (For loan $200k to $499k) Cash incentive $2000 (For loan above $500k) Cash incentive $2.5k (For loan above 1.5m) For refi only', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 2Yrs Fixed, 2Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 200000, 16, 0, 16, 0, 1, 0.75, 'Min Loan - $200,000.  1-time Free conversion, exercisable after lock-in period 2) Cash incentive $1000 (For loan $200k to $499k) Cash incentive $2000 (For loan above $500k) Cash incentive $2.5k (For loan above 1.5m) For refi only', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 3Yrs Fixed, 3Yrs lock-in, >$800k', 'both', 'fixed', 'both', 'completed', true, 800000, 17, 0, 17, 0, 17, 0, 'Min Loan - $800,000. 1-time Free conversion, exercisable after lock-in period 2) Cash incentive $1000 (For loan $200k to $499k) Cash incentive $2000 (For loan above $500k) Cash incentive $2.5k (For loan above 1.5m) For refi only', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('HSBC 3Yrs Fixed, 3Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 200000, 18, 0, 18, 0, 18, 0, 'Min Loan - $200,000.  1-time Free conversion, exercisable after lock-in period 2) Cash incentive $1000 (For loan $200k to $499k) Cash incentive $2000 (For loan above $500k) Cash incentive $2.5k (For loan above 1.5m) For refi only', 7);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank Board Rate, 2Yrs lock-in', 'both', 'float', 'both', 'completed', true, 0, 24, -2.55, 24, -2.55, 24, -2.55, '', 8);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank Board Rate, no lock-in', 'new', 'float', 'private', 'buc', false, 0, 24, -2.55, 24, -2.55, 24, -2.55, '', 8);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank 2Yrs Fixed, 2Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 0, 20, 0, 20, 0, 24, -2.17, '', 8);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank 3Yrs Fixed, 3Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 0, 21, 0, 21, 0, 22, 0, '', 8);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank 4Yrs Fixed, 4Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 0, 23, 0, 23, 0, 23, 0, '', 8);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank 5Yrs Fixed, 5Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 0, 23, 0, 23, 0, 23, 0, '', 8);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank Sibor, 3Yrs lock-in', 'both', 'float', 'both', 'completed', true, 0, 2, 0.9, 2, 0.9, 2, 0.9, '', 8);
 
 ----------------------------------------Editing & tracking----------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------Editing & tracking----------------------------
+
+
+
+
+
+
+

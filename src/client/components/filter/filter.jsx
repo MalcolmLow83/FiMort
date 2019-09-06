@@ -23,8 +23,8 @@ class Filter extends React.Component {
         this.props.compTypeHandler(event.target.value);
     }
 
-    submitHandler(event){
-        event.preventDefault;
+    submitHandler(){
+        // event.preventDefault;
         console.log("submiting");
     }
 
@@ -32,7 +32,7 @@ class Filter extends React.Component {
         return(
             <div className="col-2">
                 <h6>filter component</h6>
-                <form>
+                
                     <select onChange={(event)=>{this.loanTypeHandler(event)}}>
                         <option value="new">New Loan</option>
                         <option value="refi">Refinance</option>    
@@ -49,9 +49,9 @@ class Filter extends React.Component {
                         <option value="buc">BUC</option>
                         <option value="completed">Completed</option>    
                     </select>
-                    <button type="submit" onClick={(event)=>{this.submitHandler(event)}}>submit</button> 
+                    <button type="submit" onClick={this.submitHandler}>filter</button> 
                     {/* <input type="submit" value="Submit" /> */}
-                </form>
+            
             </div>
         );
     }
