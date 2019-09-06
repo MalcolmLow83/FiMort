@@ -11,7 +11,10 @@ class App extends React.Component {
       banks: null,
       ref_rates: null,
       packages: null,
-      mapping: null
+      year1_rates: null,
+      year2_rates: null,
+      year3_rates: null,
+      rates: null
     };
   }
 
@@ -38,15 +41,7 @@ class App extends React.Component {
     .then(response => response.json())
     .then((result) => {
       this.setState({packages:result.packages})
-    },
-    (error) => {
-      console.log(error)
-    })
-
-    fetch("/mappings")
-    .then(response => response.json())
-    .then((result) => {
-      this.setState({mapping:result.mappings})
+      this.setState({rates:result.rates})
     },
     (error) => {
       console.log(error)
@@ -59,7 +54,7 @@ class App extends React.Component {
       <div className="container">
         <div className="row">
           <Form  />
-          <List packages={this.state.packages}/>
+          <List packages={this.state.packages} rates={this.state.rates}/>
           </div>
       </div>
     );
