@@ -13,18 +13,15 @@ class App extends React.Component {
       ref_rates: null,
       packages: null,
       rates: null,
-      loanType: "both",
-      rateType: "both",
-      propType: "both",
-      compType: "both",
-      amount: 800000
+      amount: 800000,
+      matches: 0
     };
     this.loanTypeHandler = this.loanTypeHandler.bind(this);
     this.rateTypeHandler = this.rateTypeHandler.bind(this);
     this.propTypeHandler = this.propTypeHandler.bind(this);
     this.compTypeHandler = this.compTypeHandler.bind(this);
     this.amountHandler = this.amountHandler.bind(this);
-    // this.submitHandler = this.submitHandler.bind(this);
+    this.submitHandler = this.submitHandler.bind(this);
   }
 
   componentDidMount(){
@@ -51,43 +48,72 @@ class App extends React.Component {
     .then((result) => {
       this.setState({packages:result.packages})
       this.setState({rates:result.rates})
+      this.setState({matches:result.rates.length})
     },
     (error) => {
       console.log(error)
     })
-  
   }
 
   loanTypeHandler(loanType){
-    this.state.loanType = loanType;
-    this.setState({loanType: loanType});
+    let rates = this.state.rates;
+    let filteredRates = rates.filter(rate => rate.new_refi === loanType || rate.new_refi === "both");
+    this.state.rates = filteredRates;
+    this.setState({rates:filteredRates})
+    this.state.matches = filteredRates.length;
+    this.setState({matches: filteredRates.length});
   };
 
   rateTypeHandler(rateType){
-    this.state.rateType = rateType;
-    this.setState({rateType: rateType});
+    let rates = this.state.rates;
+    let filteredRates = rates.filter(rate => rate.float_fixed === rateType || rate.float_fixed === "both");
+    this.state.rates = filteredRates;
+    this.setState({rates:filteredRates})
+    this.state.matches = filteredRates.length;
+    this.setState({matches: filteredRates.length});
   };
 
   propTypeHandler(propType){
-    this.state.propType = propType;
-    this.setState({propType: propType});
+    let rates = this.state.rates;
+    let filteredRates = rates.filter(rate => rate.hdb_pvt === propType || rate.hdb_pvt === "both");
+    this.state.rates = filteredRates;
+    this.setState({rates:filteredRates})
+    this.state.matches = filteredRates.length;
+    this.setState({matches: filteredRates.length});
   };
 
   compTypeHandler(compType){
-    this.state.compType = compType;
-    this.setState({compType: compType});
+    let rates = this.state.rates;
+    let filteredRates = rates.filter(rate => rate.buc_completed === compType || rate.buc_completed === "both");
+    this.state.rates = filteredRates;
+    this.setState({rates:filteredRates})
+    this.state.matches = filteredRates.length;
+    this.setState({matches: filteredRates.length});
   };
 
   amountHandler(amount){
     this.state.amount = amount;
     this.setState({amount: amount});
+    this.state.matches = filteredRates.length;
+    this.setState({matches: filteredRates.length});
   }
 
-  submitHandler(amount){
-    console.log("app.submitTypeHandler");
+  submitHandler(event){
+    let amount = this.state.amount;
+    let rates = this.state.rates;
+    let filteredRates = rates.filter(rate => rate.min_loan <= amount);
+    this.state.rates = filteredRates;
+    this.setState({rates:filteredRates})
+    this.state.matches = filteredRates.length;
+    this.setState({matches: filteredRates.length});
   };
 
+  filtering(){
+    console.log("giltering");
+  }
+
   render() {
+    this.filtering();
     return (
       <div className="container">
         <div className="row">
@@ -98,7 +124,9 @@ class App extends React.Component {
                   amountHandler={this.amountHandler} amount={this.state.amount}
                   submitHandler={this.submitHandler}
           />
-          <List packages={this.state.packages} rates={this.state.rates}/>
+          <List filtered={this.state.filtered} rates={this.state.rates} filteredRates={this.state.filteredRates}
+                matches={this.state.matches}
+          />
           </div>
       </div>
     );

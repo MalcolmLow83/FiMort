@@ -5,7 +5,7 @@ class Filter extends React.Component {
     constructor(){
         super();
         this.state = {
-            message: "Select your filter"
+            message: "Your Loan Amount:"
         }
     }
 
@@ -37,43 +37,44 @@ class Filter extends React.Component {
     submitHandler(event){
         // event.preventDefault;
         if (event.target.value < 100000) {
-            this.setState({message: "Min. loan amount is $100k"});
-
+            this.setState({message: "Filter Failed: Min. loan amount is $100k"});
         } else {
-            this.setState({message: "Filtered"});
+            this.setState({message: "Your Loan Amount:"});
             this.props.submitHandler(event.target.value);
         }
     }
 
     render(){
         return(
-            <div className="col-2">
-                <h6>{this.state.message}</h6>
-                
+            <div className="col-3">
+                <h6>Select Your Filters</h6>
+                    <label>New/Refi Loan:</label>
                     <select onChange={(event)=>{this.loanTypeHandler(event)}}>
                         <option value="both">Any</option>
                         <option value="new">New Loan</option>
                         <option value="refi">Refinance</option>    
                     </select>
+                    <label>Floating/Fixed:</label>
                     <select onChange={(event)=>{this.rateTypeHandler(event)}}>
                         <option value="both">Any</option>
                         <option value="float">Floating Rate</option>
                         <option value="fixed">Fixed Rate</option>    
                     </select>
+                    <label>HDB/Private Property:</label>
                     <select onChange={(event)=>{this.propTypeHandler(event)}}>
                         <option value="both">Any</option>
                         <option value="hdb">HDB</option>
                         <option value="pvt">Private</option>    
                     </select>
+                    <label>BUC/Completed:</label>
                     <select onChange={(event)=>{this.compTypeHandler(event)}}>
                         <option value="both">Any</option>
                         <option value="buc">BUC</option>
                         <option value="completed">Completed</option>    
                     </select>
+                    <label>{this.state.message}</label>
                     <input onChange={(event)=>{this.amountHandler(event)}} value={this.props.amount}/>
                     <button onClick={(event)=>{this.submitHandler(event)}} value={this.state.amount}>filter</button> 
-                    
-            
             </div>
         );
     }
