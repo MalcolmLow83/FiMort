@@ -70,6 +70,12 @@ module.exports = (db) => {
                             for (j = 0; j < packages.length; j++) {
                               rates.push ({
                                 name: packages[j].name, 
+                                new_refi: packages[j].new_refi,
+                                float_fixed: packages[j].float_fixed,
+                                hdb_pvt: packages[j].hdb_pvt,
+                                buc_completed: packages[j].buc_completed,
+                                lock_in: packages[j].lock_in,
+                                min_loan: packages[j].min_loan,
                                 year1_rate: year1_rates[j],
                                 year2_rate: year2_rates[j],
                                 year3_rate: year3_rates[j]

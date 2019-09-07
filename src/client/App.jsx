@@ -16,12 +16,15 @@ class App extends React.Component {
       loanType: "both",
       rateType: "both",
       propType: "both",
-      compType: "both"
+      compType: "both",
+      amount: 800000
     };
     this.loanTypeHandler = this.loanTypeHandler.bind(this);
     this.rateTypeHandler = this.rateTypeHandler.bind(this);
     this.propTypeHandler = this.propTypeHandler.bind(this);
     this.compTypeHandler = this.compTypeHandler.bind(this);
+    this.amountHandler = this.amountHandler.bind(this);
+    // this.submitHandler = this.submitHandler.bind(this);
   }
 
   componentDidMount(){
@@ -75,8 +78,13 @@ class App extends React.Component {
     this.setState({compType: compType});
   };
 
-  submitTypeHandler(){
-    console.log("submitTypeHandler");
+  amountHandler(amount){
+    this.state.amount = amount;
+    this.setState({amount: amount});
+  }
+
+  submitHandler(amount){
+    console.log("app.submitTypeHandler");
   };
 
   render() {
@@ -87,7 +95,8 @@ class App extends React.Component {
                   rateTypeHandler={this.rateTypeHandler} rateType={this.state.rateType}
                   propTypeHandler={this.propTypeHandler} propType={this.state.propType}
                   compTypeHandler={this.compTypeHandler} compType={this.state.compType}
-                  submitTypeHandler={this.submitTypeHandler}
+                  amountHandler={this.amountHandler} amount={this.state.amount}
+                  submitHandler={this.submitHandler}
           />
           <List packages={this.state.packages} rates={this.state.rates}/>
           </div>
