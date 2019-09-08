@@ -32,18 +32,13 @@ class Filter extends React.Component {
     amountHandler(event){
         this.setState({amount:event.target.value});
         this.props.amountHandler(event.target.value);
-    }
-    
-    submitHandler(event){
-        // event.preventDefault;
         if (event.target.value < 100000) {
             this.setState({message: "Filter Failed: Min. loan amount is $100k"});
         } else {
             this.setState({message: "Your Loan Amount:"});
-            this.props.submitHandler(event.target.value);
-        }
+        }   
     }
-
+    
     render(){
         return(
             <div className="col-3">
@@ -70,8 +65,7 @@ class Filter extends React.Component {
                     </select>
                     <label>{this.state.message}</label>
                     <input onChange={(event)=>{this.amountHandler(event)}} value={this.props.amount}/>
-                    <button onClick={(event)=>{this.submitHandler(event)}} value={this.state.amount}>filter</button>
-                    <button onClick={this.props.test}>test</button>
+                    <button onClick={this.props.submitHandler}>filter</button>
             </div>
         );
     }

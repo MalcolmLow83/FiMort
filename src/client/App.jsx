@@ -19,7 +19,7 @@ class App extends React.Component {
       rateType: "float",
       propType: "private",
       compType: "completed",
-      amount: 800000,
+      amount: 100000,
       matches: 0
     };
     this.loanTypeHandler = this.loanTypeHandler.bind(this);
@@ -100,10 +100,6 @@ class App extends React.Component {
     this.state.filtered = true;
     this.setState({filtered: true});
   };
-
-  test(){
-    console.log("testing");
-  }
 
   render() {
     return (
