@@ -13,6 +13,12 @@ class App extends React.Component {
       ref_rates: null,
       packages: null,
       rates: null,
+      filtered: false,
+      filteredRates: null,
+      loanType: "new",
+      rateType: "float",
+      propType: "private",
+      compType: "completed",
       amount: 800000,
       matches: 0
     };
@@ -56,64 +62,50 @@ class App extends React.Component {
   }
 
   loanTypeHandler(loanType){
-    let rates = this.state.rates;
-    let filteredRates = rates.filter(rate => rate.new_refi === loanType || rate.new_refi === "both");
-    this.state.rates = filteredRates;
-    this.setState({rates:filteredRates})
-    this.state.matches = filteredRates.length;
-    this.setState({matches: filteredRates.length});
+    this.state.loanType = loanType;
+    this.setState({loanType:loanType});
   };
 
   rateTypeHandler(rateType){
-    let rates = this.state.rates;
-    let filteredRates = rates.filter(rate => rate.float_fixed === rateType || rate.float_fixed === "both");
-    this.state.rates = filteredRates;
-    this.setState({rates:filteredRates})
-    this.state.matches = filteredRates.length;
-    this.setState({matches: filteredRates.length});
+    this.state.rateType = rateType;
+    this.setState({rateType:rateType});
   };
 
   propTypeHandler(propType){
-    let rates = this.state.rates;
-    let filteredRates = rates.filter(rate => rate.hdb_pvt === propType || rate.hdb_pvt === "both");
-    this.state.rates = filteredRates;
-    this.setState({rates:filteredRates})
-    this.state.matches = filteredRates.length;
-    this.setState({matches: filteredRates.length});
+    this.state.propType = propType;
+    this.setState({propType:propType});
   };
 
   compTypeHandler(compType){
-    let rates = this.state.rates;
-    let filteredRates = rates.filter(rate => rate.buc_completed === compType || rate.buc_completed === "both");
-    this.state.rates = filteredRates;
-    this.setState({rates:filteredRates})
-    this.state.matches = filteredRates.length;
-    this.setState({matches: filteredRates.length});
+    this.state.compType = compType;
+    this.setState({compType:compType});
   };
 
   amountHandler(amount){
     this.state.amount = amount;
     this.setState({amount: amount});
-    this.state.matches = filteredRates.length;
-    this.setState({matches: filteredRates.length});
   }
 
   submitHandler(event){
-    let amount = this.state.amount;
-    let rates = this.state.rates;
-    let filteredRates = rates.filter(rate => rate.min_loan <= amount);
-    this.state.rates = filteredRates;
-    this.setState({rates:filteredRates})
-    this.state.matches = filteredRates.length;
-    this.setState({matches: filteredRates.length});
+    let filteredRates = this.state.rates;
+    let filteredRates1 = filteredRates.filter(rate => rate.new_refi === this.state.loanType || rate.new_refi === "both");
+    let filteredRates2 = filteredRates1.filter(rate => rate.float_fixed === this.state.rateType);
+    let filteredRates3 = filteredRates2.filter(rate => rate.hdb_pvt === this.state.propType || rate.hdb_pvt === "both");
+    let filteredRates4 = filteredRates3.filter(rate => rate.buc_completed === this.state.compType || rate.buc_completed === "both");
+    let filteredRates5 = filteredRates4.filter(rate => rate.min_loan <= this.state.amount);
+    this.state.matches = filteredRates5.length;
+    this.setState({matches: filteredRates5.length});
+    this.state.filteredRates = filteredRates5;
+    this.setState({filteredRates: filteredRates5});
+    this.state.filtered = true;
+    this.setState({filtered: true});
   };
 
-  filtering(){
-    console.log("giltering");
+  test(){
+    console.log("testing");
   }
 
   render() {
-    this.filtering();
     return (
       <div className="container">
         <div className="row">
@@ -122,7 +114,7 @@ class App extends React.Component {
                   propTypeHandler={this.propTypeHandler} propType={this.state.propType}
                   compTypeHandler={this.compTypeHandler} compType={this.state.compType}
                   amountHandler={this.amountHandler} amount={this.state.amount}
-                  submitHandler={this.submitHandler}
+                  submitHandler={this.submitHandler} test={this.test}
           />
           <List filtered={this.state.filtered} rates={this.state.rates} filteredRates={this.state.filteredRates}
                 matches={this.state.matches}

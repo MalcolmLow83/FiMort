@@ -50,31 +50,28 @@ class Filter extends React.Component {
                 <h6>Select Your Filters</h6>
                     <label>New/Refi Loan:</label>
                     <select onChange={(event)=>{this.loanTypeHandler(event)}}>
-                        <option value="both">Any</option>
                         <option value="new">New Loan</option>
                         <option value="refi">Refinance</option>    
                     </select>
                     <label>Floating/Fixed:</label>
                     <select onChange={(event)=>{this.rateTypeHandler(event)}}>
-                        <option value="both">Any</option>
                         <option value="float">Floating Rate</option>
                         <option value="fixed">Fixed Rate</option>    
                     </select>
                     <label>HDB/Private Property:</label>
                     <select onChange={(event)=>{this.propTypeHandler(event)}}>
-                        <option value="both">Any</option>
-                        <option value="hdb">HDB</option>
-                        <option value="pvt">Private</option>    
+                        <option value="pvt">Private</option>
+                        <option value="hdb">HDB</option>    
                     </select>
                     <label>BUC/Completed:</label>
                     <select onChange={(event)=>{this.compTypeHandler(event)}}>
-                        <option value="both">Any</option>
+                        <option value="completed">Completed</option>
                         <option value="buc">BUC</option>
-                        <option value="completed">Completed</option>    
                     </select>
                     <label>{this.state.message}</label>
                     <input onChange={(event)=>{this.amountHandler(event)}} value={this.props.amount}/>
-                    <button onClick={(event)=>{this.submitHandler(event)}} value={this.state.amount}>filter</button> 
+                    <button onClick={(event)=>{this.submitHandler(event)}} value={this.state.amount}>filter</button>
+                    <button onClick={this.props.test}>test</button>
             </div>
         );
     }
