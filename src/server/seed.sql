@@ -37,6 +37,12 @@ INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed', 2.33, 8);
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed 3rd yr', 2.4, 8);
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('4Yrs Fixed', 2.78, 8);
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('SRFR2', 4.85, 8);
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('1Yr Fixed', 2.22, 9);
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 1.98, 9);
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('MBR', 1.55, 9);
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('R BR', 0, 10);
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('FDR', 1.37, 11);
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 1.95, 11);
 
 
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('BOC 3M Sibor, 2Yrs lock-in (Min loan $500k)', 'both', 'float', 'private', 'completed', true, 500000, 2, 0.7, 2, 0.7, 2, 0.7, 'For loan quantum 500k and above. Legal Subsidy of 0.4% of loan amount, capped at $2,000. Full Redemption penalty: 1.5%. Cancellation Fees: 1.5%. Admin Fee: 0.25%. Floor rate set at 1.00%. In the event SIBOR + Spread is lower than 1%, Floor rate will apply.', 2);
@@ -71,6 +77,41 @@ INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_i
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank 4Yrs Fixed, 4Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 0, 23, 0, 23, 0, 23, 0, '', 8);
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank 5Yrs Fixed, 5Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 0, 23, 0, 23, 0, 23, 0, '', 8);
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank Sibor, 3Yrs lock-in', 'both', 'float', 'both', 'completed', true, 0, 2, 0.9, 2, 0.9, 2, 0.9, '', 8);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 1M Sibor, 1Yr lock-in', 'both', 'float', 'both', 'completed', true, 100000, 1, 0.3, 1, 0.3, 1, 0.35, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 1Yr Fixed, 1Yr lock-in', 'both', 'fixed', 'both', 'completed', true, 100000, 25, 0, 2, 0.25, 2, 0.3, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 1M Sibor, no lock-in', 'new', 'float', 'private', 'buc', false, 100000, 1, 0.3, 1, 0.3, 1, 0.35, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 3M Sibor, no lock-in', 'new', 'float', 'private', 'buc', false, 100000, 2, 0.2, 2, 0.2, 2, 0.35, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 6M Sibor, no lock-in', 'new', 'float', 'private', 'buc', false, 100000, 3, 0.2, 3, 0.2, 3, 0.35, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC MBR, no lock-in', 'new', 'float', 'both', 'buc', false, 100000, 27, 0.52, 27, 0.52, 27, 0.52, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 3M Sibor, 1Yr lock-in', 'new', 'float', 'both', 'completed', true, 100000, 2, 0.2, 2, 0.2, 2, 0.35, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 6M Sibor, 1Yr lock-in', 'new', 'float', 'both', 'completed', true, 100000, 3, 0.2, 3, 0.2, 3, 0.35, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 2Yrs Fixed, 2Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 100000, 26, 0, 26, 0, 27, 0.6, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 2Yrs Fixed, 2Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 100000, 26, 0, 26, 0, 2, 0.35, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, 2Yrs lock-in', 'both', 'float', 'both', 'completed', true, 500000, 29, 0.88, 29, 0.88, 29, 0.88, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, no lock-in', 'new', 'float', 'both', 'buc', false, 500000, 29, 0.88, 29, 0.88, 29, 0.88, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, 2Yrs lock-in (MOA, min loan $500k)', 'both', 'float', 'private', 'completed', true, 500000, 29, 0.93, 29, 0.93, 29, 0.93, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, 2Yrs lock-in (Fixed Rate, min loan $500k)', 'both', 'fixed', 'both', 'completed', true, 500000, 30, 0, 30, 0, 2, 0.5, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, no lock-in (MOA, min loan $500k)', 'new', 'float', 'private', 'buc', false, 500000, 29, 0.93, 29, 0.93, 29, 0.93, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, 2Yrs lock-in', 'both', 'float', 'both', 'completed', true, 100000, 29, 0.93, 29, 0.93, 29, 0.93, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, 2Yrs lock-in (MOA)', 'both', 'float', 'both', 'completed', true, 100000, 29, 0.98, 29, 0.98, 29, 0.98, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, no lock-in (MOA)', 'new', 'float', 'private', 'buc', false, 100000, 29, 0.98, 29, 0.98, 29, 0.98, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, no lock-in', 'new', 'float', 'both', 'buc', false, 100000, 29, 0.93, 29, 0.93, 29, 0.93, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 3M Sibor, no lock-in', 'new', 'float', 'both', 'buc', false, 100000, 2, 0.3, 2, 0.3, 2, 0.3, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 3M Sibor, no lock-in', 'new', 'float', 'private', 'buc', false, 100000, 2, 0.58, 2, 0.58, 2, 0.58, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 3M Sibor, 2Yrs lock-in', 'both', 'float', 'both', 'completed', true, 100000, 2, 0.25, 2, 0.25, 2, 0.3, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 1M Sibor, 2Yrs lock-in (Min loan $500k)', 'both', 'float', 'private', 'completed', true, 500000, 1, 0.4, 1, 0.4, 1, 0.5, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 1M Sibor, 2Yrs lock-in (Min loan $500k)', 'both', 'float', 'both', 'completed', true, 500000, 1, 0.3, 1, 0.3, 1, 0.35, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 1M Sibor, 2Yrs lock-in', 'both', 'float', 'both', 'completed', true, 100000, 1, 0.35, 1, 0.35, 1, 0.35, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 1M Sibor, 2Yrs lock-in (MOA)', 'both', 'float', 'private', 'completed', true, 100000, 1, 0.65, 1, 0.65, 1, 0.65, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 1M Sibor, no lock-in (MOA)', 'new', 'float', 'private', 'buc', false, 100000, 1, 0.65, 1, 0.65, 1, 0.65, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 1M Sibor, no lock-in', 'new', 'float', 'both', 'buc', false, 100000, 1, 0.35, 1, 0.35, 1, 0.35, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 3M Sibor, 2Yrs lock-in', 'both', 'float', 'both', 'completed', true, 500000, 2, 0.3, 2, 0.3, 2, 0.3, 'Legal Subsidy for loan $500k and above', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 3M Sibor, 2Yrs lock-in (MOA)', 'both', 'float', 'private', 'completed', true, 500000, 2, 0.58, 2, 0.58, 2, 0.58, 'Legal Subsidy for loan $500k and above', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 3M Sibor, 2Yrs lock-in (MOA, Min loan $500k)', 'both', 'float', 'private', 'completed', true, 500000, 2, 0.35, 2, 0.35, 2, 0.45, 'Legal Subsidy of $1.8k for refi loan $500k and above', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 1M Sibor, no lock-in (Min loan $500k)', 'new', 'float', 'both', 'buc', false, 500000, 1, 0.3, 1, 0.3, 1, 0.35, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 3M Sibor, no lock-in (Min loan $500k)', 'new', 'float', 'both', 'buc', false, 500000, 2, 0.25, 2, 0.25, 2, 0.30, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 1M Sibor, no lock-in (MOA, Min loan $500k)', 'new', 'float', 'private', 'buc', false, 500000, 1, 0.4, 1, 0.4, 1, 0.5, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 3M Sibor, no lock-in (MOA, Min loan $500k)', 'new', 'float', 'private', 'buc', false, 500000, 2, 0.35, 2, 0.35, 2, 0.45, '', 11);
 
 
 ----------------------------------------Editing & tracking----------------------------
@@ -115,16 +156,22 @@ INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed', 2.33, 8);   --21
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed 3rd yr', 2.4, 8);   --22 MAY 3Yrs Fixed 3rd yr
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('4Yrs Fixed', 2.78, 8);   --23 MAY 4Yrs Fixed
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('SRFR2', 4.85, 8);   --24 MAY SRFR2
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('1Yr Fixed', 2.22, 9);   --25 OCBC 1Yr Fixed
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 1.98, 9);   --26 OCBC 2Yrs Fixed
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('MBR', 1.55, 9);   --27 OCBC MBR
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('R BR', 0, 10); --28 RHB R BR
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('FDR', 1.37, 11); --29 SCB FDR
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 1.95, 11); --30 SCB 2Yrs Fixed
 
 
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('1Yr Fixed', 2.22, 9);   --22 OCBC 1Yr Fixed
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 1.98, 9);   --23 OCBC 2Yrs Fixed
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('MBR', 1.55, 9);   --24 OCBC MBR
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('R BR', 0, 10); --25 RHB R BR
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('FDR', 1.37, 11); --26 SCB FDR
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('CLR19', 3.75, 12); --27 SF CLR19
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('PHDR19', '2.25', 12); --28 SF PHDR19
-INSERT INTO ref_rates(name, rate, bank_id) VALUES('PPLR19', '3.25', 12); --29 SF PPLR19
+
+
+
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('CLR19', 3.75, 12); --31 SF CLR19
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('PHDR19', '2.25', 12); --32 SF PHDR19
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('PPLR19', '3.25', 12); --33 SF PPLR19
+
+
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('SI BR', '3.25', 13);   --30 SI SI BR
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('2Yrs Fixed', 2.08, 14);   --31 UOB 2Yrs Fixed
 INSERT INTO ref_rates(name, rate, bank_id) VALUES('3Yrs Fixed', 1.98, 14);   --32 UOB 3Yrs Fixed
@@ -165,25 +212,53 @@ INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_i
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank 4Yrs Fixed, 4Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 0, 23, 0, 23, 0, 23, 0, '', 8);
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank 5Yrs Fixed, 5Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 0, 23, 0, 23, 0, 23, 0, '', 8);
 INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('MAY Bank Sibor, 3Yrs lock-in', 'both', 'float', 'both', 'completed', true, 0, 2, 0.9, 2, 0.9, 2, 0.9, '', 8);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 1M Sibor, 1Yr lock-in', 'both', 'float', 'both', 'completed', true, 100000, 1, 0.3, 1, 0.3, 1, 0.35, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 1Yr Fixed, 1Yr lock-in', 'both', 'fixed', 'both', 'completed', true, 100000, 25, 0, 2, 0.25, 2, 0.3, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 1M Sibor, no lock-in', 'new', 'float', 'private', 'buc', false, 100000, 1, 0.3, 1, 0.3, 1, 0.35, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 3M Sibor, no lock-in', 'new', 'float', 'private', 'buc', false, 100000, 2, 0.2, 2, 0.2, 2, 0.35, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 6M Sibor, no lock-in', 'new', 'float', 'private', 'buc', false, 100000, 3, 0.2, 3, 0.2, 3, 0.35, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC MBR, no lock-in', 'new', 'float', 'both', 'buc', false, 100000, 27, 0.52, 27, 0.52, 27, 0.52, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 3M Sibor, 1Yr lock-in', 'new', 'float', 'both', 'completed', true, 100000, 2, 0.2, 2, 0.2, 2, 0.35, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 6M Sibor, 1Yr lock-in', 'new', 'float', 'both', 'completed', true, 100000, 3, 0.2, 3, 0.2, 3, 0.35, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 2Yrs Fixed, 2Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 100000, 26, 0, 26, 0, 27, 0.6, '', 9);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('OCBC 2Yrs Fixed, 2Yrs lock-in', 'both', 'fixed', 'both', 'completed', true, 100000, 26, 0, 26, 0, 2, 0.35, '', 9);
 
 ----------------------------------------Editing & tracking----------------------------
 
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, 2Yrs lock-in', 'both', 'float', 'both', 'completed', true, 500000, 29, 0.88, 29, 0.88, 29, 0.88, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, no lock-in', 'new', 'float', 'both', 'buc', false, 500000, 29, 0.88, 29, 0.88, 29, 0.88, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, 2Yrs lock-in (MOA, min loan $500k)', 'both', 'float', 'private', 'completed', true, 500000, 29, 0.93, 29, 0.93, 29, 0.93, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, 2Yrs lock-in (Fixed Rate, min loan $500k)', 'both', 'fixed', 'both', 'completed', true, 500000, 30, 0, 30, 0, 2, 0.5, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, no lock-in (MOA, min loan $500k)', 'new', 'float', 'private', 'buc', false, 500000, 29, 0.93, 29, 0.93, 29, 0.93, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, 2Yrs lock-in', 'both', 'float', 'both', 'completed', true, 100000, 29, 0.93, 29, 0.93, 29, 0.93, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, 2Yrs lock-in (MOA)', 'both', 'float', 'both', 'completed', true, 100000, 29, 0.98, 29, 0.98, 29, 0.98, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, no lock-in (MOA)', 'new', 'float', 'private', 'buc', false, 100000, 29, 0.98, 29, 0.98, 29, 0.98, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB FDR, no lock-in', 'new', 'float', 'both', 'buc', false, 100000, 29, 0.93, 29, 0.93, 29, 0.93, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 3M Sibor, no lock-in', 'new', 'float', 'both', 'buc', false, 100000, 2, 0.3, 2, 0.3, 2, 0.3, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 3M Sibor, no lock-in', 'new', 'float', 'private', 'buc', false, 100000, 2, 0.58, 2, 0.58, 2, 0.58, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 3M Sibor, 2Yrs lock-in', 'both', 'float', 'both', 'completed', true, 100000, 2, 0.25, 2, 0.25, 2, 0.3, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 1M Sibor, 2Yrs lock-in (Min loan $500k)', 'both', 'float', 'private', 'completed', true, 500000, 1, 0.4, 1, 0.4, 1, 0.5, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 1M Sibor, 2Yrs lock-in (Min loan $500k)', 'both', 'float', 'both', 'completed', true, 500000, 1, 0.3, 1, 0.3, 1, 0.35, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 1M Sibor, 2Yrs lock-in', 'both', 'float', 'both', 'completed', true, 100000, 1, 0.35, 1, 0.35, 1, 0.35, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 1M Sibor, 2Yrs lock-in (MOA)', 'both', 'float', 'private', 'completed', true, 100000, 1, 0.65, 1, 0.65, 1, 0.65, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 1M Sibor, no lock-in (MOA)', 'new', 'float', 'private', 'buc', false, 100000, 1, 0.65, 1, 0.65, 1, 0.65, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 1M Sibor, no lock-in', 'new', 'float', 'both', 'buc', false, 100000, 1, 0.35, 1, 0.35, 1, 0.35, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 3M Sibor, 2Yrs lock-in', 'both', 'float', 'both', 'completed', true, 500000, 2, 0.3, 2, 0.3, 2, 0.3, 'Legal Subsidy for loan $500k and above', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 3M Sibor, 2Yrs lock-in (MOA)', 'both', 'float', 'private', 'completed', true, 500000, 2, 0.58, 2, 0.58, 2, 0.58, 'Legal Subsidy for loan $500k and above', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 3M Sibor, 2Yrs lock-in (MOA, Min loan $500k)', 'both', 'float', 'private', 'completed', true, 500000, 2, 0.35, 2, 0.35, 2, 0.45, 'Legal Subsidy of $1.8k for refi loan $500k and above', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 1M Sibor, no lock-in (Min loan $500k)', 'new', 'float', 'both', 'buc', false, 500000, 1, 0.3, 1, 0.3, 1, 0.35, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 3M Sibor, no lock-in (Min loan $500k)', 'new', 'float', 'both', 'buc', false, 500000, 2, 0.25, 2, 0.25, 2, 0.30, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 1M Sibor, no lock-in (MOA, Min loan $500k)', 'new', 'float', 'private', 'buc', false, 500000, 1, 0.4, 1, 0.4, 1, 0.5, '', 11);
+INSERT INTO packages(name, new_refi, float_fixed, hdb_pvt, buc_completed, lock_in, min_loan, rate_1, spread_1, rate_2, spread_2, rate_3, spread_3, remarks, bank_id) VALUES('SCB 3M Sibor, no lock-in (MOA, Min loan $500k)', 'new', 'float', 'private', 'buc', false, 500000, 2, 0.35, 2, 0.35, 2, 0.45, '', 11);
 
+----------------------------------------Editing & tracking----------------------------
 
-
-
-
-
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('CLR19', 3.75, 12); --31 SF CLR19
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('PHDR19', '2.25', 12); --32 SF PHDR19
+INSERT INTO ref_rates(name, rate, bank_id) VALUES('PPLR19', '3.25', 12); --33 SF PPLR19
 
 
 
 
 
 ----------------------------------------Editing & tracking----------------------------
-
-
-
-
-
-
-
