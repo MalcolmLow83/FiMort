@@ -41,31 +41,49 @@ class Filter extends React.Component {
     
     render(){
         return(
-            <div className="col-3">
+            <div className="col-4">
                 <h6>Select Your Filters</h6>
+                <div>
                     <label>New/Refi Loan:</label>
-                    <select onChange={(event)=>{this.loanTypeHandler(event)}}>
+                    <select onChange={(event)=>{this.loanTypeHandler(event)}} className="custom-select-sm">
                         <option value="new">New Loan</option>
                         <option value="refi">Refinance</option>    
                     </select>
+                </div>
+                <div>
                     <label>Floating/Fixed:</label>
-                    <select onChange={(event)=>{this.rateTypeHandler(event)}}>
+                    <select onChange={(event)=>{this.rateTypeHandler(event)}} className="custom-select-sm">
                         <option value="float">Floating Rate</option>
                         <option value="fixed">Fixed Rate</option>    
                     </select>
+                </div>
+                <div>
                     <label>HDB/Private Property:</label>
-                    <select onChange={(event)=>{this.propTypeHandler(event)}}>
+                    <select onChange={(event)=>{this.propTypeHandler(event)}} className="custom-select-sm">
                         <option value="pvt">Private</option>
-                        <option value="hdb">HDB</option>    
+                        <option value="hdb">HDB</option>
+                        <option value="commercial">Commercial</option>    
                     </select>
+                </div>
+                <div>
                     <label>BUC/Completed:</label>
-                    <select onChange={(event)=>{this.compTypeHandler(event)}}>
+                    <select onChange={(event)=>{this.compTypeHandler(event)}} className="custom-select-sm">
                         <option value="completed">Completed</option>
                         <option value="buc">BUC</option>
                     </select>
+                </div>
+                <div>
+                    <label>lock-in:</label>
+                    <select className="custom-select-sm">
+                        <option value="true">Yes</option>
+                        <option value="false">Yes</option>
+                    </select>
+                </div>
+                <div>
                     <label>{this.state.message}</label>
                     <input onChange={(event)=>{this.amountHandler(event)}} value={this.props.amount}/>
                     <button onClick={this.props.submitHandler}>filter</button>
+                </div>
             </div>
         );
     }
