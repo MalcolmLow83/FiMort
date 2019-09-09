@@ -2,11 +2,12 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 
 import Nav from './components/nav/nav';
+import Calculator from './components/calculator/calculator';
 import Form from './components/form/form';
 import List from './components/list/list';
 import Filter from './components/filter/filter';
 
-// import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 class App extends React.Component {
   constructor() {
@@ -17,20 +18,25 @@ class App extends React.Component {
       packages: null,
       rates: null,
       filtered: false,
-      filteredRates: null,
+      filteredRates: [],
       loanType: "new",
       rateType: "float",
       propType: "private",
       compType: "completed",
+      // lockIn: true,
       amount: 100000,
-      matches: 0
+      matches: 0,
+      calculateList: []
     };
     this.loanTypeHandler = this.loanTypeHandler.bind(this);
     this.rateTypeHandler = this.rateTypeHandler.bind(this);
     this.propTypeHandler = this.propTypeHandler.bind(this);
     this.compTypeHandler = this.compTypeHandler.bind(this);
+    // this.lockInHandler = this.lockInHandler.bind(this);
     this.amountHandler = this.amountHandler.bind(this);
-    this.submitHandler = this.submitHandler.bind(this);
+    // this.submitHandler = this.submitHandler.bind(this);
+    this.selectHandler = this.selectHandler.bind(this);
+    this.removeHandler = this.removeHandler.bind(this);
   }
 
   componentDidMount(){
@@ -136,6 +142,28 @@ class App extends React.Component {
     this.setState({compType:compType});
   };
 
+  // lockInHandler(lockIn){
+  //   console.log("lockIn",typeof lockIn);
+  //   let filteredRates = this.state.rates;
+  //   let filteredRates1 = filteredRates.filter(rate => rate.new_refi === this.state.loanType || rate.new_refi === "both");
+  //   let filteredRates2 = filteredRates1.filter(rate => rate.float_fixed === this.state.rateType);
+  //   let filteredRates3 = filteredRates2.filter(rate => rate.hdb_pvt === this.state.propType || rate.hdb_pvt === "both");
+  //   let filteredRates4 = filteredRates3.filter(rate => rate.buc_completed === this.state.compType || rate.buc_completed === "both");
+  //   console.log(filteredRates4);
+  //   let filteredRates5 = filteredRates4.filter(rate => rate.lock_In <= this.state.lockIn);
+  //   console.log(filteredRates5);
+  //   let filteredRates6 = filteredRates5.filter(rate => rate.min_loan <= this.state.amount);
+  //   this.state.matches = filteredRates6.length;
+  //   this.setState({matches: filteredRates6.length});
+  //   this.state.filteredRates = filteredRates6;
+  //   this.setState({filteredRates: filteredRates6});
+  //   this.state.filtered = true;
+  //   this.setState({filtered: true});
+
+  //   this.state.lockIn = lockIn;
+  //   this.setState({lockIn: lockIn});
+  // }
+
   amountHandler(amount){
     let filteredRates = this.state.rates;
     let filteredRates1 = filteredRates.filter(rate => rate.new_refi === this.state.loanType || rate.new_refi === "both");
@@ -154,40 +182,68 @@ class App extends React.Component {
     this.setState({amount: amount});
   }
 
-  submitHandler(event){
-    let filteredRates = this.state.rates;
-    let filteredRates1 = filteredRates.filter(rate => rate.new_refi === this.state.loanType || rate.new_refi === "both");
-    let filteredRates2 = filteredRates1.filter(rate => rate.float_fixed === this.state.rateType);
-    let filteredRates3 = filteredRates2.filter(rate => rate.hdb_pvt === this.state.propType || rate.hdb_pvt === "both");
-    let filteredRates4 = filteredRates3.filter(rate => rate.buc_completed === this.state.compType || rate.buc_completed === "both");
-    let filteredRates5 = filteredRates4.filter(rate => rate.min_loan <= this.state.amount);
-    this.state.matches = filteredRates5.length;
-    this.setState({matches: filteredRates5.length});
-    this.state.filteredRates = filteredRates5;
-    this.setState({filteredRates: filteredRates5});
-    this.state.filtered = true;
-    this.setState({filtered: true});
+  // submitHandler(event){
+  //   let filteredRates = this.state.rates;
+  //   let filteredRates1 = filteredRates.filter(rate => rate.new_refi === this.state.loanType || rate.new_refi === "both");
+  //   let filteredRates2 = filteredRates1.filter(rate => rate.float_fixed === this.state.rateType);
+  //   let filteredRates3 = filteredRates2.filter(rate => rate.hdb_pvt === this.state.propType || rate.hdb_pvt === "both");
+  //   let filteredRates4 = filteredRates3.filter(rate => rate.buc_completed === this.state.compType || rate.buc_completed === "both");
+  //   let filteredRates5 = filteredRates4.filter(rate => rate.min_loan <= this.state.amount);
+  //   this.state.matches = filteredRates5.length;
+  //   this.setState({matches: filteredRates5.length});
+  //   this.state.filteredRates = filteredRates5;
+  //   this.setState({filteredRates: filteredRates5});
+  //   this.state.filtered = true;
+  //   this.setState({filtered: true});
+  // };
+
+  selectHandler(index){
+    if (this.state.filtered === false && this.state.calculateList.length < 2){
+      this.state.calculateList.push(this.state.rates[index])
+      this.setState({calculateList: this.state.calculateList});
+    } else if (this.state.filtered === true && this.state.calculateList.length < 2) {
+      let filteredRates = this.state.filteredRates[index]
+      let calculateList = this.state.calculateList;
+      calculateList.push(filteredRates)
+      this.setState({calculateList: calculateList})
+    }
   };
 
+  removeHandler(index){
+    console.log("App", index);
+    let calculateList = this.state.calculateList;
+    calculateList.splice(index, 1);
+    this.setState({calculateList: calculateList});
+  }
+
   render() {
+      
     return (
       <div className="container">
         <div className="row">
           <Nav />
-          <Form />
+          <Router>
+              <Route path="/form" component={Form} />
+          </Router>
         </div>
         <div className="row">
           <Filter loanTypeHandler={this.loanTypeHandler} loanType={this.state.loanType} 
                   rateTypeHandler={this.rateTypeHandler} rateType={this.state.rateType}
                   propTypeHandler={this.propTypeHandler} propType={this.state.propType}
                   compTypeHandler={this.compTypeHandler} compType={this.state.compType}
+                  // lockInHandler={this.lockInHandler} lockIn={this.state.lockIn}
                   amountHandler={this.amountHandler} amount={this.state.amount}
-                  submitHandler={this.submitHandler} test={this.test}
+                  submitHandler={this.submitHandler}
           />
-          <List filtered={this.state.filtered} rates={this.state.rates} filteredRates={this.state.filteredRates}
-                matches={this.state.matches}
-          />
+          <div className="col">
+            <Calculator amount={this.state.amount} calculateList={this.state.calculateList}
+                        removeHandler={this.removeHandler} index={this.state.index}
+            />
+            <List filtered={this.state.filtered} rates={this.state.rates} filteredRates={this.state.filteredRates}
+                  matches={this.state.matches} selectHandler={this.selectHandler} index={this.state.index}
+            />
           </div>
+        </div>
       </div>
     );
   }

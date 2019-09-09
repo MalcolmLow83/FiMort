@@ -29,6 +29,11 @@ class Filter extends React.Component {
         this.props.compTypeHandler(event.target.value);
     }
 
+    // lockInHandler(event){
+    //     this.setState({lockIn:event.target.value});
+    //     this.props.lockInHandler(event.target.value);
+    // }
+
     amountHandler(event){
         this.setState({amount:event.target.value});
         this.props.amountHandler(event.target.value);
@@ -42,6 +47,7 @@ class Filter extends React.Component {
     render(){
         return(
             <div className="col-4">
+                <img src="https://www.moneysavingexpert.com/content/dam/mse/editorial-image-library/guide-images/hero-images/hero-mortgages-overpay.jpg.rendition.320.320.jpg" />
                 <h6>Select Your Filters</h6>
                 <div>
                     <label>New/Refi Loan:</label>
@@ -73,16 +79,16 @@ class Filter extends React.Component {
                     </select>
                 </div>
                 <div>
-                    <label>lock-in:</label>
-                    <select className="custom-select-sm">
+                    {/* <label>lock-in:</label>
+                    <select onChange={(event)=>{this.lockInHandler(event)}} className="custom-select-sm">
                         <option value="true">Yes</option>
-                        <option value="false">Yes</option>
-                    </select>
+                        <option value="false">No</option>
+                    </select> */}
                 </div>
                 <div>
                     <label>{this.state.message}</label>
-                    <input onChange={(event)=>{this.amountHandler(event)}} value={this.props.amount}/>
-                    <button onClick={this.props.submitHandler}>filter</button>
+                    <input type="number" onChange={(event)=>{this.amountHandler(event)}} value={this.props.amount}/>
+                    {/* <button onClick={this.props.submitHandler}>filter</button> */}
                 </div>
             </div>
         );

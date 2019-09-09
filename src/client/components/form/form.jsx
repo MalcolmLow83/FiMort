@@ -7,8 +7,7 @@ class Form extends React.Component {
   render() {
     return (
       <div className="col-5">
-        <h6>form component</h6>
-        
+        <h6>Form Component</h6>
       </div>
     );
   }

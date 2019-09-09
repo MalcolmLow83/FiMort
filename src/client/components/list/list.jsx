@@ -4,13 +4,17 @@ import styles from './style.scss';
 
 class List extends React.Component {
   
+  selectHandler(index){
+    this.props.selectHandler(index);
+  }
+
   render() {
     let display = "";
     if (this.props.filtered === false){
       if (this.props.rates !== null) {
         display = this.props.rates.map((rate, index) => {
           return(
-            <tr key ={index}>
+            <tr key ={index} onClick={()=>{this.selectHandler(index)}}>
               <th scope="row">{rate.name}</th>
               <td>{rate.year1_rate}</td>
               <td>{rate.year2_rate}</td>
@@ -22,7 +26,7 @@ class List extends React.Component {
     } else if (this.props.filteredRates !== null) {
       display = this.props.filteredRates.map((rate, index) => {
         return(
-          <tr key ={index}>
+          <tr key ={index} onClick={()=>{this.selectHandler(index)}}>
             <th scope="row">{rate.name}</th>
             <td>{rate.year1_rate}</td>
             <td>{rate.year2_rate}</td>
@@ -32,7 +36,7 @@ class List extends React.Component {
       }) 
     };
     return (
-      <div className="col">
+      <div className="row">
         <h6>Matches ({this.props.matches})</h6>
         <table className="table table-striped table-hover">
           <thead>
