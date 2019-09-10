@@ -37,7 +37,8 @@ class App extends React.Component {
       term: 240,
       matches: 0,
       compareList: [],
-      calculateList: []
+      calculateList: [],
+      resultList: []
     };
     this.loanTypeHandler = this.loanTypeHandler.bind(this);
     this.rateTypeHandler = this.rateTypeHandler.bind(this);
@@ -215,13 +216,12 @@ class App extends React.Component {
         amount: amount,
         year1_rate: rates.year1_rate,
         term: term,
-        monthlyPayment: monthlyPayment,
-        totalPayment: totalPayment
+        monthlyPayment: monthlyPayment.toFixed(2),
+        totalPayment: totalPayment.toFixed(2)
       });
       this.state.calculateList = calculateList;
       this.setState({calculateList: calculateList});
-      console.log(calculateList);
-
+    
     } else if (this.state.filtered === true && this.state.compareList.length < 2) {
       let filteredRates = this.state.filteredRates[index]
       let compareList = this.state.compareList;
@@ -238,12 +238,11 @@ class App extends React.Component {
         amount: amount,
         year1_rate: filteredRates.year1_rate,
         term: term,
-        monthlyPayment: monthlyPayment,
-        totalPayment: totalPayment
+        monthlyPayment: monthlyPayment.toFixed(2),
+        totalPayment: totalPayment.toFixed(2)
       });
       this.state.calculateList = calculateList;
       this.setState({calculateList: calculateList});
-      console.log(calculateList);
     }
     
   };

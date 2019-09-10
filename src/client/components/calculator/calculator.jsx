@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './style.scss';
 
 class Calculator extends React.Component {
     
@@ -12,7 +13,7 @@ class Calculator extends React.Component {
         if (this.props.calculateList !== null) {
             calculatedRates = this.props.calculateList.map((rate, index)=>{
                 return (
-                    <div key={index} className="col">
+                    <div key={index} className={"col " + styles.building}>
                         <p>Loan Amount:$ {rate.amount}</p>
                         <p>Year 1: {rate.year1_rate}%</p>
                         <p>Term: {rate.term} mths</p>
