@@ -37,7 +37,7 @@ class List extends React.Component {
     };
     return (
       <div className="row">
-        <h6>Matches ({this.props.matches})</h6>
+        <h5>Matches ({this.props.matches})</h5>
         <table className="table table-striped table-hover">
           <thead>
             <tr>

@@ -47,7 +47,7 @@ class Filter extends React.Component {
     render(){
         return(
             <div className="col-4">
-                <img src="https://www.moneysavingexpert.com/content/dam/mse/editorial-image-library/guide-images/hero-images/hero-mortgages-overpay.jpg.rendition.320.320.jpg" />
+                <img src="https://www.moneysense.ca/wp-content/uploads/2014/10/Mortgagekeyboard-ArdaGuldogan-1000.jpg" />
                 <h6>Select Your Filters</h6>
                 <div>
                     <label>New/Refi Loan:</label>
@@ -57,14 +57,14 @@ class Filter extends React.Component {
                     </select>
                 </div>
                 <div>
-                    <label>Floating/Fixed:</label>
+                    <label>Floating/Fixed   :</label>
                     <select onChange={(event)=>{this.rateTypeHandler(event)}} className="custom-select-sm">
                         <option value="float">Floating Rate</option>
                         <option value="fixed">Fixed Rate</option>    
                     </select>
                 </div>
                 <div>
-                    <label>HDB/Private Property:</label>
+                    <label>HDB/Private Property:    </label>
                     <select onChange={(event)=>{this.propTypeHandler(event)}} className="custom-select-sm">
                         <option value="pvt">Private</option>
                         <option value="hdb">HDB</option>
@@ -72,7 +72,7 @@ class Filter extends React.Component {
                     </select>
                 </div>
                 <div>
-                    <label>BUC/Completed:</label>
+                    <label>BUC/Completed:   </label>
                     <select onChange={(event)=>{this.compTypeHandler(event)}} className="custom-select-sm">
                         <option value="completed">Completed</option>
                         <option value="buc">BUC</option>
@@ -86,7 +86,7 @@ class Filter extends React.Component {
                     </select> */}
                 </div>
                 <div>
-                    <label>{this.state.message}</label>
+                    <label>{this.state.message} </label>
                     <input type="number" onChange={(event)=>{this.amountHandler(event)}} value={this.props.amount}/>
                     {/* <button onClick={this.props.submitHandler}>filter</button> */}
                 </div>

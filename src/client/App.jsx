@@ -7,6 +7,8 @@ import Form from './components/form/form';
 import List from './components/list/list';
 import Filter from './components/filter/filter';
 
+import styles from './style.scss';
+
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 class App extends React.Component {
@@ -220,6 +222,23 @@ class App extends React.Component {
       
     return (
       <div className="container">
+        <div className="row">
+          <div className="col">
+            <img className={styles.indexImgRoof} src="https://static.vecteezy.com/system/resources/previews/000/169/843/non_2x/red-roof-tile-vector-seamless-background.jpg" />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <img className={"img-fluid" + styles.indexImg} src="https://cdn.pixabay.com/photo/2013/07/26/15/49/money-167735_960_720.jpg" />
+          </div>
+          <div className="col">
+            <img className={"img-fluid"+ styles.indexImg} src="https://www.theadviser.com.au/images/resize/mortgage-house-1-ta_b684.jpg" />
+          </div>
+          <div className="col">
+            <img className={"img-fluid"+ styles.indexImg} src="https://cdn.pixabay.com/photo/2013/07/26/15/48/house-167734_960_720.jpg" />
+          </div>
+        </div>
+        
         <div className="row">
           <Nav />
           <Router>
