@@ -36,12 +36,11 @@ class List extends React.Component {
       }) 
     };
     return (
-      <div className="row">
-        <h5>Matches ({this.props.matches})</h5>
-        <table className="table table-striped table-hover">
+      <div className={"row "  + styles.building}>
+        <table className="table table-striped table-hover ">
           <thead>
             <tr>
-              <th scope="col">Mortgage Package</th>
+              <th scope="col">Mortgage Package({this.props.matches}) </th>
               <th scope="col">Year 1 Rate</th>
               <th scope="col">Year 2 Rate</th>
               <th scope="col">Year 3 Rate</th>

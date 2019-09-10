@@ -9,12 +9,14 @@ import Calculator from './components/calculator/calculator';
 
 import Form from './components/form/form';
 
-
 import styles from './style.scss';
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
-
+let amortization = function(amount, rate, term){
+  let monthlyRate = rate/12;
+  return amount * (monthlyRate/(1-Math.pow(1+monthlyRate, -term)));
+}
 
 class App extends React.Component {
   constructor() {
@@ -32,8 +34,10 @@ class App extends React.Component {
       compType: "completed",
       // lockIn: true,
       amount: 100000,
+      term: 240,
       matches: 0,
-      compareList: []
+      compareList: [],
+      calculateList: []
     };
     this.loanTypeHandler = this.loanTypeHandler.bind(this);
     this.rateTypeHandler = this.rateTypeHandler.bind(this);
@@ -41,7 +45,7 @@ class App extends React.Component {
     this.compTypeHandler = this.compTypeHandler.bind(this);
     // this.lockInHandler = this.lockInHandler.bind(this);
     this.amountHandler = this.amountHandler.bind(this);
-    // this.submitHandler = this.submitHandler.bind(this);
+    this.termHandler = this.termHandler.bind(this);
     this.selectHandler = this.selectHandler.bind(this);
     this.removeHandler = this.removeHandler.bind(this);
   }
@@ -189,37 +193,69 @@ class App extends React.Component {
     this.setState({amount: amount});
   }
 
-  // submitHandler(event){
-  //   let filteredRates = this.state.rates;
-  //   let filteredRates1 = filteredRates.filter(rate => rate.new_refi === this.state.loanType || rate.new_refi === "both");
-  //   let filteredRates2 = filteredRates1.filter(rate => rate.float_fixed === this.state.rateType);
-  //   let filteredRates3 = filteredRates2.filter(rate => rate.hdb_pvt === this.state.propType || rate.hdb_pvt === "both");
-  //   let filteredRates4 = filteredRates3.filter(rate => rate.buc_completed === this.state.compType || rate.buc_completed === "both");
-  //   let filteredRates5 = filteredRates4.filter(rate => rate.min_loan <= this.state.amount);
-  //   this.state.matches = filteredRates5.length;
-  //   this.setState({matches: filteredRates5.length});
-  //   this.state.filteredRates = filteredRates5;
-  //   this.setState({filteredRates: filteredRates5});
-  //   this.state.filtered = true;
-  //   this.setState({filtered: true});
-  // };
+  termHandler(term){
+    this.state.term = term;
+    this.setState({term: term});
+  }
 
   selectHandler(index){
     if (this.state.filtered === false && this.state.compareList.length < 2){
-      this.state.compareList.push(this.state.rates[index])
-      this.setState({compareList: this.state.compareList});
+      let rates = this.state.rates[index]
+      let compareList = this.state.compareList;
+      compareList.push(rates);
+      this.setState({compareList: compareList});
+      
+      let amount = this.state.amount;
+      let year1_rate = (rates.year1_rate/100);
+      let term = this.state.term;
+      let monthlyPayment = amortization(amount, year1_rate, term);
+      let totalPayment = monthlyPayment * term;
+      let calculateList = this.state.calculateList;
+      calculateList.push({
+        amount: amount,
+        year1_rate: rates.year1_rate,
+        term: term,
+        monthlyPayment: monthlyPayment,
+        totalPayment: totalPayment
+      });
+      this.state.calculateList = calculateList;
+      this.setState({calculateList: calculateList});
+      console.log(calculateList);
+
     } else if (this.state.filtered === true && this.state.compareList.length < 2) {
       let filteredRates = this.state.filteredRates[index]
       let compareList = this.state.compareList;
       compareList.push(filteredRates)
-      this.setState({compareList: compareList})
+      this.setState({compareList: compareList});
+
+      let amount = this.state.amount;
+      let year1_rate = (filteredRates.year1_rate/100);
+      let term = this.state.term;
+      let monthlyPayment = amortization(amount, year1_rate, term);
+      let totalPayment = monthlyPayment * term;
+      let calculateList = this.state.calculateList;
+      calculateList.push({
+        amount: amount,
+        year1_rate: filteredRates.year1_rate,
+        term: term,
+        monthlyPayment: monthlyPayment,
+        totalPayment: totalPayment
+      });
+      this.state.calculateList = calculateList;
+      this.setState({calculateList: calculateList});
+      console.log(calculateList);
     }
+    
   };
 
   removeHandler(index){
     let compareList = this.state.compareList;
     compareList.splice(index, 1);
     this.setState({compareList: compareList});
+
+    let calculateList = this.state.calculateList;
+    calculateList.splice(index, 1);
+    this.setState({calculateList: calculateList});
   }
 
   render() {
@@ -231,7 +267,7 @@ class App extends React.Component {
             <img className={styles.indexImgRoof} src="https://static.vecteezy.com/system/resources/previews/000/169/843/non_2x/red-roof-tile-vector-seamless-background.jpg" />
           </div>
         </div>
-        <div className="row">
+        <div className={"row " + styles.building}>
           <div className="col">
             <img className={"img-fluid" + styles.indexImg} src="https://cdn.pixabay.com/photo/2013/07/26/15/49/money-167735_960_720.jpg" />
           </div>
@@ -243,7 +279,7 @@ class App extends React.Component {
           </div>
         </div>
         
-        <div className="row">
+        <div className={"row " + styles.building}>
           <Nav />
           <Router>
               <Route path="/form" component={Form} />
@@ -256,13 +292,13 @@ class App extends React.Component {
                   compTypeHandler={this.compTypeHandler} compType={this.state.compType}
                   // lockInHandler={this.lockInHandler} lockIn={this.state.lockIn}
                   amountHandler={this.amountHandler} amount={this.state.amount}
-                  submitHandler={this.submitHandler}
+                  termHandler={this.termHandler} term={this.state.term}
           />
           <div className="col">
-            <Compare amount={this.state.amount} compareList={this.state.compareList}
+            <Compare amount={this.state.amount} compareList={this.state.compareList} />
+            <Calculator amount={this.state.amount} calculateList={this.state.calculateList}
                         removeHandler={this.removeHandler} index={this.state.index}
             />
-            <Calculator />
             <List filtered={this.state.filtered} rates={this.state.rates} filteredRates={this.state.filteredRates}
                   matches={this.state.matches} selectHandler={this.selectHandler} index={this.state.index}
             />
