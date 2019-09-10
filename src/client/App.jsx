@@ -2,14 +2,19 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 
 import Nav from './components/nav/nav';
-import Calculator from './components/calculator/calculator';
-import Form from './components/form/form';
-import List from './components/list/list';
 import Filter from './components/filter/filter';
+import List from './components/list/list';
+import Compare from './components/compare/compare';
+import Calculator from './components/calculator/calculator';
+
+import Form from './components/form/form';
+
 
 import styles from './style.scss';
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
+
 
 class App extends React.Component {
   constructor() {
@@ -28,7 +33,7 @@ class App extends React.Component {
       // lockIn: true,
       amount: 100000,
       matches: 0,
-      calculateList: []
+      compareList: []
     };
     this.loanTypeHandler = this.loanTypeHandler.bind(this);
     this.rateTypeHandler = this.rateTypeHandler.bind(this);
@@ -200,22 +205,21 @@ class App extends React.Component {
   // };
 
   selectHandler(index){
-    if (this.state.filtered === false && this.state.calculateList.length < 2){
-      this.state.calculateList.push(this.state.rates[index])
-      this.setState({calculateList: this.state.calculateList});
-    } else if (this.state.filtered === true && this.state.calculateList.length < 2) {
+    if (this.state.filtered === false && this.state.compareList.length < 2){
+      this.state.compareList.push(this.state.rates[index])
+      this.setState({compareList: this.state.compareList});
+    } else if (this.state.filtered === true && this.state.compareList.length < 2) {
       let filteredRates = this.state.filteredRates[index]
-      let calculateList = this.state.calculateList;
-      calculateList.push(filteredRates)
-      this.setState({calculateList: calculateList})
+      let compareList = this.state.compareList;
+      compareList.push(filteredRates)
+      this.setState({compareList: compareList})
     }
   };
 
   removeHandler(index){
-    console.log("App", index);
-    let calculateList = this.state.calculateList;
-    calculateList.splice(index, 1);
-    this.setState({calculateList: calculateList});
+    let compareList = this.state.compareList;
+    compareList.splice(index, 1);
+    this.setState({compareList: compareList});
   }
 
   render() {
@@ -255,9 +259,10 @@ class App extends React.Component {
                   submitHandler={this.submitHandler}
           />
           <div className="col">
-            <Calculator amount={this.state.amount} calculateList={this.state.calculateList}
+            <Compare amount={this.state.amount} compareList={this.state.compareList}
                         removeHandler={this.removeHandler} index={this.state.index}
             />
+            <Calculator />
             <List filtered={this.state.filtered} rates={this.state.rates} filteredRates={this.state.filteredRates}
                   matches={this.state.matches} selectHandler={this.selectHandler} index={this.state.index}
             />
