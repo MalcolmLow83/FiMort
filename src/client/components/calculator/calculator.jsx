@@ -13,13 +13,13 @@ class Calculator extends React.Component {
         if (this.props.calculateList !== null) {
             calculatedRates = this.props.calculateList.map((rate, index)=>{
                 return (
-                    <div key={index} className={"col " + styles.building}>
+                    <div key={index} className={"col " + styles.calculateDiv}>
                         <p>Loan Amount:$ {rate.amount}</p>
                         <p>Year 1: {rate.year1_rate}%</p>
                         <p>Term: {rate.term} mths</p>
                         <p>Monthly Payment:$ {rate.monthlyPayment}</p>
                         <p>Total Payment:$ {rate.totalPayment}</p>
-                        <button className="btn btn-outline-secondary" key={index} onClick={()=>{this.removeHandler(index)}}>Remove</button>
+                        <button className="btn btn-outline-success" key={index} onClick={()=>{this.removeHandler(index)}}>Remove</button>
                     </div>
                 );
             })

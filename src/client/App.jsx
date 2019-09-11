@@ -6,9 +6,15 @@ import List from './components/list/list';
 import Compare from './components/compare/compare';
 import Calculator from './components/calculator/calculator';
 
-import Form from './components/form/form';
-
 import styles from './style.scss';
+
+let filtering = function (array, loanType, rateType, propType, compType, amount){
+  let array1 = array.filter(rate => rate.new_refi === loanType || rate.new_refi === "both");
+  let array2 = array1.filter(rate => rate.float_fixed === rateType);
+  let array3 = array2.filter(rate => rate.hdb_pvt === propType || rate.hdb_pvt === "both");
+  let array4 = array3.filter(rate => rate.buc_completed === compType || rate.buc_completed === "both");
+  return array4.filter(rate => rate.min_loan <= amount);
+};
 
 let amortization = function(amount, rate, term){
   let monthlyRate = rate/12;
@@ -29,7 +35,6 @@ class App extends React.Component {
       rateType: "float",
       propType: "private",
       compType: "completed",
-      // lockIn: true,
       amount: 100000,
       term: 240,
       matches: 0,
@@ -41,7 +46,6 @@ class App extends React.Component {
     this.rateTypeHandler = this.rateTypeHandler.bind(this);
     this.propTypeHandler = this.propTypeHandler.bind(this);
     this.compTypeHandler = this.compTypeHandler.bind(this);
-    // this.lockInHandler = this.lockInHandler.bind(this);
     this.amountHandler = this.amountHandler.bind(this);
     this.termHandler = this.termHandler.bind(this);
     this.selectHandler = this.selectHandler.bind(this);
@@ -80,113 +84,61 @@ class App extends React.Component {
   }
 
   loanTypeHandler(loanType){
-    let filteredRates = this.state.rates;
-    let filteredRates1 = filteredRates.filter(rate => rate.new_refi === this.state.loanType || rate.new_refi === "both");
-    let filteredRates2 = filteredRates1.filter(rate => rate.float_fixed === this.state.rateType);
-    let filteredRates3 = filteredRates2.filter(rate => rate.hdb_pvt === this.state.propType || rate.hdb_pvt === "both");
-    let filteredRates4 = filteredRates3.filter(rate => rate.buc_completed === this.state.compType || rate.buc_completed === "both");
-    let filteredRates5 = filteredRates4.filter(rate => rate.min_loan <= this.state.amount);
-    this.state.matches = filteredRates5.length;
-    this.setState({matches: filteredRates5.length});
-    this.state.filteredRates = filteredRates5;
-    this.setState({filteredRates: filteredRates5});
+    let filteredRates = filtering(this.state.rates, this.state.loanType, this.state.rateType, this.state.propType, this.state.compType, this.state.amount);
+    this.state.matches = filteredRates.length;
+    this.setState({matches: filteredRates.length});
+    this.state.filteredRates = filteredRates;
+    this.setState({filteredRates: filteredRates});
     this.state.filtered = true;
     this.setState({filtered: true});
-
     this.state.loanType = loanType;
     this.setState({loanType:loanType});
   };
 
   rateTypeHandler(rateType){
-    let filteredRates = this.state.rates;
-    let filteredRates1 = filteredRates.filter(rate => rate.new_refi === this.state.loanType || rate.new_refi === "both");
-    let filteredRates2 = filteredRates1.filter(rate => rate.float_fixed === this.state.rateType);
-    let filteredRates3 = filteredRates2.filter(rate => rate.hdb_pvt === this.state.propType || rate.hdb_pvt === "both");
-    let filteredRates4 = filteredRates3.filter(rate => rate.buc_completed === this.state.compType || rate.buc_completed === "both");
-    let filteredRates5 = filteredRates4.filter(rate => rate.min_loan <= this.state.amount);
-    this.state.matches = filteredRates5.length;
-    this.setState({matches: filteredRates5.length});
-    this.state.filteredRates = filteredRates5;
-    this.setState({filteredRates: filteredRates5});
+    let filteredRates = filtering(this.state.rates, this.state.loanType, this.state.rateType, this.state.propType, this.state.compType, this.state.amount);
+    this.state.matches = filteredRates.length;
+    this.setState({matches: filteredRates.length});
+    this.state.filteredRates = filteredRates;
+    this.setState({filteredRates: filteredRates});
     this.state.filtered = true;
     this.setState({filtered: true});
-
     this.state.rateType = rateType;
     this.setState({rateType:rateType});
   };
 
   propTypeHandler(propType){
-    let filteredRates = this.state.rates;
-    let filteredRates1 = filteredRates.filter(rate => rate.new_refi === this.state.loanType || rate.new_refi === "both");
-    let filteredRates2 = filteredRates1.filter(rate => rate.float_fixed === this.state.rateType);
-    let filteredRates3 = filteredRates2.filter(rate => rate.hdb_pvt === this.state.propType || rate.hdb_pvt === "both");
-    let filteredRates4 = filteredRates3.filter(rate => rate.buc_completed === this.state.compType || rate.buc_completed === "both");
-    let filteredRates5 = filteredRates4.filter(rate => rate.min_loan <= this.state.amount);
-    this.state.matches = filteredRates5.length;
-    this.setState({matches: filteredRates5.length});
-    this.state.filteredRates = filteredRates5;
-    this.setState({filteredRates: filteredRates5});
+    let filteredRates = filtering(this.state.rates, this.state.loanType, this.state.rateType, this.state.propType, this.state.compType, this.state.amount);
+    this.state.matches = filteredRates.length;
+    this.setState({matches: filteredRates.length});
+    this.state.filteredRates = filteredRates;
+    this.setState({filteredRates: filteredRates});
     this.state.filtered = true;
     this.setState({filtered: true});
-
     this.state.propType = propType;
     this.setState({propType:propType});
   };
 
   compTypeHandler(compType){
-    let filteredRates = this.state.rates;
-    let filteredRates1 = filteredRates.filter(rate => rate.new_refi === this.state.loanType || rate.new_refi === "both");
-    let filteredRates2 = filteredRates1.filter(rate => rate.float_fixed === this.state.rateType);
-    let filteredRates3 = filteredRates2.filter(rate => rate.hdb_pvt === this.state.propType || rate.hdb_pvt === "both");
-    let filteredRates4 = filteredRates3.filter(rate => rate.buc_completed === this.state.compType || rate.buc_completed === "both");
-    let filteredRates5 = filteredRates4.filter(rate => rate.min_loan <= this.state.amount);
-    this.state.matches = filteredRates5.length;
-    this.setState({matches: filteredRates5.length});
-    this.state.filteredRates = filteredRates5;
-    this.setState({filteredRates: filteredRates5});
+    let filteredRates = filtering(this.state.rates, this.state.loanType, this.state.rateType, this.state.propType, this.state.compType, this.state.amount);
+    this.state.matches = filteredRates.length;
+    this.setState({matches: filteredRates.length});
+    this.state.filteredRates = filteredRates;
+    this.setState({filteredRates: filteredRates});
     this.state.filtered = true;
     this.setState({filtered: true});
-
     this.state.compType = compType;
     this.setState({compType:compType});
   };
 
-  // lockInHandler(lockIn){
-  //   console.log("lockIn",typeof lockIn);
-  //   let filteredRates = this.state.rates;
-  //   let filteredRates1 = filteredRates.filter(rate => rate.new_refi === this.state.loanType || rate.new_refi === "both");
-  //   let filteredRates2 = filteredRates1.filter(rate => rate.float_fixed === this.state.rateType);
-  //   let filteredRates3 = filteredRates2.filter(rate => rate.hdb_pvt === this.state.propType || rate.hdb_pvt === "both");
-  //   let filteredRates4 = filteredRates3.filter(rate => rate.buc_completed === this.state.compType || rate.buc_completed === "both");
-  //   console.log(filteredRates4);
-  //   let filteredRates5 = filteredRates4.filter(rate => rate.lock_In <= this.state.lockIn);
-  //   console.log(filteredRates5);
-  //   let filteredRates6 = filteredRates5.filter(rate => rate.min_loan <= this.state.amount);
-  //   this.state.matches = filteredRates6.length;
-  //   this.setState({matches: filteredRates6.length});
-  //   this.state.filteredRates = filteredRates6;
-  //   this.setState({filteredRates: filteredRates6});
-  //   this.state.filtered = true;
-  //   this.setState({filtered: true});
-
-  //   this.state.lockIn = lockIn;
-  //   this.setState({lockIn: lockIn});
-  // }
-
   amountHandler(amount){
-    let filteredRates = this.state.rates;
-    let filteredRates1 = filteredRates.filter(rate => rate.new_refi === this.state.loanType || rate.new_refi === "both");
-    let filteredRates2 = filteredRates1.filter(rate => rate.float_fixed === this.state.rateType);
-    let filteredRates3 = filteredRates2.filter(rate => rate.hdb_pvt === this.state.propType || rate.hdb_pvt === "both");
-    let filteredRates4 = filteredRates3.filter(rate => rate.buc_completed === this.state.compType || rate.buc_completed === "both");
-    let filteredRates5 = filteredRates4.filter(rate => rate.min_loan <= this.state.amount);
-    this.state.matches = filteredRates5.length;
-    this.setState({matches: filteredRates5.length});
-    this.state.filteredRates = filteredRates5;
-    this.setState({filteredRates: filteredRates5});
+    let filteredRates = filtering(this.state.rates, this.state.loanType, this.state.rateType, this.state.propType, this.state.compType, this.state.amount);
+    this.state.matches = filteredRates.length;
+    this.setState({matches: filteredRates.length});
+    this.state.filteredRates = filteredRates;
+    this.setState({filteredRates: filteredRates});
     this.state.filtered = true;
     this.setState({filtered: true});
-
     this.state.amount = amount;
     this.setState({amount: amount});
   }
@@ -202,7 +154,6 @@ class App extends React.Component {
       let compareList = this.state.compareList;
       compareList.push(rates);
       this.setState({compareList: compareList});
-      
       let amount = this.state.amount;
       let year1_rate = (rates.year1_rate/100);
       let term = this.state.term;
@@ -218,13 +169,11 @@ class App extends React.Component {
       });
       this.state.calculateList = calculateList;
       this.setState({calculateList: calculateList});
-    
     } else if (this.state.filtered === true && this.state.compareList.length < 2) {
       let filteredRates = this.state.filteredRates[index]
       let compareList = this.state.compareList;
       compareList.push(filteredRates)
       this.setState({compareList: compareList});
-
       let amount = this.state.amount;
       let year1_rate = (filteredRates.year1_rate/100);
       let term = this.state.term;
@@ -248,7 +197,6 @@ class App extends React.Component {
     let compareList = this.state.compareList;
     compareList.splice(index, 1);
     this.setState({compareList: compareList});
-
     let calculateList = this.state.calculateList;
     calculateList.splice(index, 1);
     this.setState({calculateList: calculateList});
@@ -259,7 +207,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <div className={"row " + styles.imgRow}>
-        <h4 className={styles.intro}>Intoducing FiMort a.k.a Fianancial Mortgage. An api app to source for market mortgage rates.</h4>
+        <h4 className={styles.intro}>FiMort a.k.a Fianancial Mortgage. Is a simple api app to source for mortgage rates available in the market. Integrated compare and calculate payment feature to help users forcast payment rates against two packages.</h4>
           
           <div className={"col " + styles.imgCol}>
             <img className={"img-fluid " + styles.indexImg} src="https://cdn.pixabay.com/photo/2013/07/26/15/49/money-167735_960_720.jpg" />
@@ -290,7 +238,6 @@ class App extends React.Component {
                   rateTypeHandler={this.rateTypeHandler} rateType={this.state.rateType}
                   propTypeHandler={this.propTypeHandler} propType={this.state.propType}
                   compTypeHandler={this.compTypeHandler} compType={this.state.compType}
-                  // lockInHandler={this.lockInHandler} lockIn={this.state.lockIn}
                   amountHandler={this.amountHandler} amount={this.state.amount}
                   termHandler={this.termHandler} term={this.state.term}
           />
