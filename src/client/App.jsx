@@ -1,7 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 
-import Nav from './components/nav/nav';
 import Filter from './components/filter/filter';
 import List from './components/list/list';
 import Compare from './components/compare/compare';
@@ -10,8 +9,6 @@ import Calculator from './components/calculator/calculator';
 import Form from './components/form/form';
 
 import styles from './style.scss';
-
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 let amortization = function(amount, rate, term){
   let monthlyRate = rate/12;
@@ -261,29 +258,33 @@ class App extends React.Component {
       
     return (
       <div className="container">
-        <div className="row">
-          <div className="col">
-            <img className={styles.indexImgRoof} src="https://static.vecteezy.com/system/resources/previews/000/169/843/non_2x/red-roof-tile-vector-seamless-background.jpg" />
+        <div className={"row " + styles.imgRow}>
+        <h4 className={styles.intro}>Intoducing FiMort a.k.a Fianancial Mortgage. An api app to source for market mortgage rates.</h4>
+          
+          <div className={"col " + styles.imgCol}>
+            <img className={"img-fluid " + styles.indexImg} src="https://cdn.pixabay.com/photo/2013/07/26/15/49/money-167735_960_720.jpg" />
+            <div className={"overlay " + styles.overlay}>
+              <div className={"text "+ styles.text}>Home</div>
+            </div>
           </div>
-        </div>
-        <div className={"row " + styles.building}>
-          <div className="col">
-            <img className={"img-fluid" + styles.indexImg} src="https://cdn.pixabay.com/photo/2013/07/26/15/49/money-167735_960_720.jpg" />
+          
+          <div className={"col " + styles.imgCol}>
+            <img className={"img-fluid "+ styles.indexImg} src="https://www.theadviser.com.au/images/resize/mortgage-house-1-ta_b684.jpg" />
+            <div className={"overlay " + styles.overlay}>
+              <div className={"text "+ styles.text}>Admin</div>
+            </div>
           </div>
-          <div className="col">
-            <img className={"img-fluid"+ styles.indexImg} src="https://www.theadviser.com.au/images/resize/mortgage-house-1-ta_b684.jpg" />
+          
+          
+          <div className={"col " + styles.imgCol}>
+            <img className={"img-fluid "+ styles.indexImg} src="https://cdn.pixabay.com/photo/2013/07/26/15/48/house-167734_960_720.jpg" />
+            <div className={"overlay " + styles.overlay}>
+              <div className={"text "+ styles.text}>Disclaimer</div>
+            </div>  
           </div>
-          <div className="col">
-            <img className={"img-fluid"+ styles.indexImg} src="https://cdn.pixabay.com/photo/2013/07/26/15/48/house-167734_960_720.jpg" />
-          </div>
+        
         </div>
         
-        <div className={"row " + styles.building}>
-          <Nav />
-          <Router>
-              <Route path="/form" component={Form} />
-          </Router>
-        </div>
         <div className="row">
           <Filter loanTypeHandler={this.loanTypeHandler} loanType={this.state.loanType} 
                   rateTypeHandler={this.rateTypeHandler} rateType={this.state.rateType}

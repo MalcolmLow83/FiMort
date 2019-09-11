@@ -1,5 +1,5 @@
 html, body {
-  background-color: #c3f5ec;
+  background-color:#d0f0c0;
   min-width: 700px;
   width: 100%;
   font-family: 'PT Sans', sans-serif;
@@ -8,16 +8,49 @@ body{
   padding:20px;
 }
 
-.indexImgRoof{
-  background-color:red;
-  width: 100%;
-}
-
-.building{
-  background-color: #fff5e6;
+.intro{
+  background-color: #77cc6d;
+  padding: 20px;
+  color: whitesmoke;
 }
 
 img{
   width: 280px;
   height: 150px;
+}
+
+.imgRow {
+}
+
+.imgCol {
+  position: relative;
+  width: 50%;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #77cc6d;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .5s ease;
+}
+
+.imgCol:hover .overlay {
+  height: 20%;
+}
+
+.text {
+  white-space: nowrap; 
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }

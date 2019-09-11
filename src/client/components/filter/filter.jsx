@@ -51,52 +51,55 @@ class Filter extends React.Component {
     
     render(){
         return(
-            <div className={"col-4 " + styles.building}>
+            <div className={"col-4 " + styles.filterCol}>
                 <img src="https://www.moneysense.ca/wp-content/uploads/2014/10/Mortgagekeyboard-ArdaGuldogan-1000.jpg" />
-                <h6>Select Your Filters</h6>
-                <div>
-                    <label>New/Refi Loan:</label>
-                    <select onChange={(event)=>{this.loanTypeHandler(event)}} className="custom-select-sm">
-                        <option value="new">New Loan</option>
-                        <option value="refi">Refinance</option>    
-                    </select>
-                </div>
-                <div>
-                    <label>Floating/Fixed:</label>
-                    <select onChange={(event)=>{this.rateTypeHandler(event)}} className="custom-select-sm">
-                        <option value="float">Floating Rate</option>
-                        <option value="fixed">Fixed Rate</option>    
-                    </select>
-                </div>
-                <div>
-                    <label>HDB/Private Property:</label>
-                    <select onChange={(event)=>{this.propTypeHandler(event)}} className="custom-select-sm">
-                        <option value="pvt">Private</option>
-                        <option value="hdb">HDB</option>
-                        <option value="commercial">Commercial</option>    
-                    </select>
-                </div>
-                <div>
-                    <label>BUC/Completed:</label>
-                    <select onChange={(event)=>{this.compTypeHandler(event)}} className="custom-select-sm">
-                        <option value="completed">Completed</option>
-                        <option value="buc">BUC</option>
-                    </select>
-                </div>
-                <div>
-                    {/* <label>lock-in:</label>
-                    <select onChange={(event)=>{this.lockInHandler(event)}} className="custom-select-sm">
-                        <option value="true">Yes</option>
-                        <option value="false">No</option>
-                    </select> */}
-                </div>
-                <div>
-                    <label>{this.state.message}</label>
-                    <input type="number" onChange={(event)=>{this.amountHandler(event)}} value={this.props.amount}/>
-                </div>
-                <div>
-                    <label>Loan Term in months:</label>
-                    <input type="number" onChange={(event)=>{this.termHandler(event)}} value={this.props.term}/>
+                
+                <div className={styles.filters}>
+                    <h6>Select Your Filters</h6>
+                    <div>
+                        <label>New/Refi Loan:</label>
+                        <select onChange={(event)=>{this.loanTypeHandler(event)}} className="custom-select-sm">
+                            <option value="new">New Loan</option>
+                            <option value="refi">Refinance</option>    
+                        </select>
+                    </div>
+                    <div>
+                        <label>Floating/Fixed:</label>
+                        <select onChange={(event)=>{this.rateTypeHandler(event)}} className="custom-select-sm">
+                            <option value="float">Floating Rate</option>
+                            <option value="fixed">Fixed Rate</option>    
+                        </select>
+                    </div>
+                    <div>
+                        <label>HDB/Private Property:</label>
+                        <select onChange={(event)=>{this.propTypeHandler(event)}} className="custom-select-sm">
+                            <option value="pvt">Private</option>
+                            <option value="hdb">HDB</option>
+                            <option value="commercial">Commercial</option>    
+                        </select>
+                    </div>
+                    <div>
+                        <label>BUC/Completed:</label>
+                        <select onChange={(event)=>{this.compTypeHandler(event)}} className="custom-select-sm">
+                            <option value="completed">Completed</option>
+                            <option value="buc">BUC</option>
+                        </select>
+                    </div>
+                    <div>
+                        {/* <label>lock-in:</label>
+                        <select onChange={(event)=>{this.lockInHandler(event)}} className="custom-select-sm">
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select> */}
+                    </div>
+                    <div>
+                        <label>{this.state.message}</label>
+                        <input type="number" onChange={(event)=>{this.amountHandler(event)}} value={this.props.amount}/>
+                    </div>
+                    <div>
+                        <label>Loan Term in months:</label>
+                        <input type="number" onChange={(event)=>{this.termHandler(event)}} value={this.props.term}/>
+                    </div>
                 </div>
             </div>
         );

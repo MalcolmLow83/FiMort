@@ -36,7 +36,7 @@ class List extends React.Component {
       }) 
     };
     return (
-      <div className={"row "  + styles.building}>
+      <div className={"row "  + styles.listRow}>
         <table className="table table-striped table-hover ">
           <thead>
             <tr>
